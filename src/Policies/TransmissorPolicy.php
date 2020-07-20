@@ -1,6 +1,6 @@
 <?php
 
-namespace Transmissor\Http\Policies;
+namespace Transmissor\Policies;
 
 use App\Models\User;
 

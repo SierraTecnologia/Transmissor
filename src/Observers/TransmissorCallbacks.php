@@ -24,7 +24,7 @@ class TransmissorCallbacks
      * @param  string $event
      * @param  array  $payload Contains:
      *                         -
-     *                         Facilitador\Models\Base
+     *                         Transmissor\Models\Base
      *                         $model
      * @return void
      */
