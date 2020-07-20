@@ -4,19 +4,12 @@
     "type": "library",
     "keywords": [
         "sierratecnologia",
-        "laravel",
-        "contract",
-        "validator",
-        "timezones",
-        "mimetype",
-        "support",
-        "helper",
-        "trait"
+        "transmissor"
     ],
     "license": "MIT",
-    "homepage": "https://sierratecnologia.com/marketplace/sierratecnologia-support/",
+    "homepage": "https://sierratecnologia.com/packages/transmissor/",
     "support": {
-        "email": "help@sierratecnologia.com",
+        "email": "help@sierratecnologia.com.br",
         "issues": "https://github.com/sierratecnologia/transmissor/issues",
         "source": "https://github.com/sierratecnologia/transmissor",
         "docs": "https://github.com/sierratecnologia/transmissor/blob/master/README.md"
@@ -26,6 +19,10 @@
             "name": "SierraTecnologia",
             "homepage": "https://sierratecnologia.com.br",
             "email": "help@sierratecnologia.com.br"
+        },
+        {
+            "name": "Ricardo Rebello Sierra",
+            "email": "contato@ricardosierra.com.br"
         }
     ],
     "require": {
