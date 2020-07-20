@@ -13,7 +13,7 @@ return [
     /*
      * Model class name of users.
      */
-    'user_model' => \Illuminate\Support\Facades\Config::get('auth.providers.users.model', Population\Models\Identity\Actors\Person::class),
+    'user_model' => \Telefonica\Models\Actors\Person::class,
 
     /*
      * Table name of users table.
@@ -48,5 +48,5 @@ return [
     /*
      * Namespace of models.
      */
-    'model_namespace' => 'App',
+    'model_namespace' => 'App\\Models',
 ];

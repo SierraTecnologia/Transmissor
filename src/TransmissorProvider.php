@@ -33,6 +33,7 @@ class TransmissorProvider extends ServiceProvider
     public static $providers = [
 
         // \Support\SupportProviderService::class,
+        \Telefonica\TelefonicaProvider::class,
 
         
     ];

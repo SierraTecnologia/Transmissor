@@ -2,13 +2,13 @@
 
 namespace Transmissor\Models;
 
-use Transmissor\Traits\HasCurrency;
+// use Transmissor\Traits\HasCurrency;
 use Illuminate\Database\Eloquent\Model;
 
 class Group extends Model
 {
 
-    use HasCurrency;
+    // use HasCurrency; @todo
 
     const UPDATED_AT = null;
 

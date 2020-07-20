@@ -6,7 +6,7 @@ use Transmissor\Models\Debt;
 use Transmissor\Models\Group;
 use Transmissor\Models\User;
 
-class PaymentFactory
+class TransmissorFactory
 {
 
     private $payer;
