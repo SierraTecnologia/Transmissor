@@ -1,0 +1,48 @@
+{
+    "name": "sierratecnologia/transmissor",
+    "description": "Transmissor de Mensagens e Notificações",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ricardo Rebello Sierra",
+            "email": "contato@ricardosierra.com.br"
+        }
+    ],
+    "require": {
+        "php": "^7.3.0",
+        "sierratecnologia/muleta": "dev-master",
+        "sierratecnologia/crypto": "dev-master",
+        "vanderlee/php-sentence": ">=1.0",
+        "fzaninotto/faker": "*",
+        "php-http/guzzle6-adapter": "*",
+        "devio/pipedrive": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Transmissor\\": "src/"
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [],
+        "post-update-cmd": [],
+        "post-create-project-cmd": []
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../**",
+            "options": {
+                "symlink": true
+            }
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Transmissor\\TransmissorProvider"
+            ]
+        }
+    }
+}
