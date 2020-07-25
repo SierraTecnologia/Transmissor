@@ -117,7 +117,7 @@ class LogWritten extends Notification implements ShouldQueue
         return (new MailMessage)
             ->subject(env('LARAMETRICS_LOG_SUBJECT', '[Larametrics Alert] The application log has been written to'))
             ->from(env('LARAMETRICS_FROM_EMAIL', 'alerts@larametrics.com'), env('LARAMETRICS_FROM_NAME', 'Larametrics Alerts'))
-            ->view('larametrics::emails.log-written', [
+            ->view('rica.larametrics::emails.log-written', [
                 'requestInfo' => $this->requestInfo,
                 'content' => $content,
                 'alertColor' => $statusColors[$status]
@@ -156,7 +156,7 @@ class LogWritten extends Notification implements ShouldQueue
         return (new SlackMessage)
             ->{ $status }()
             ->attachment(function($attachment) use($requestInfo, $fields, $content) {
-                $attachment->title('Log #' . $requestInfo['id'], route('larametrics::logs.show', $requestInfo['id']))
+                $attachment->title('Log #' . $requestInfo['id'], route('rica.larametrics::logs.show', $requestInfo['id']))
                     ->content($content)
                     ->fields($fields);
             });
