@@ -1,4 +1,6 @@
-<?php namespace Transmissor\Traits;
+<?php 
+
+namespace Transmissor\Traits;
 
 use App\Models\User;
 
