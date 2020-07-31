@@ -1,14 +1,15 @@
 <?php
 
+// @todo
+
 namespace Transmissor\Models;
 
 use App\Contants\Tables;
 use Illuminate\Database\Eloquent\Collection;
 use App\Models\Model;
 
-// @todo CRiar e ativar esses dois
-use App\Models\Entities\NotificationEntity;
-use App\Models\Builders\NotificationBuilder;
+use Population\Manipule\Entities\NotificationEntity;
+use Population\Manipule\Builders\NotificationBuilder;
 
 /**
  * Class Notification.
@@ -20,109 +21,130 @@ use App\Models\Builders\NotificationBuilder;
  */
 class Notification extends Model
 {
-    /**
-     * @inheritdoc
-     */
-    public $timestamps = false;
+    public $table = "notifications";
 
-    /**
-     * @inheritdoc
-     */
-    protected $fillable = [
-        'value',
+    public $primaryKey = "id";
+
+    public $timestamps = true;
+
+    public $fillable = [
+        'user_id',
+        'flag',
+        'uuid',
+        'title',
+        'details',
+        'is_read',
     ];
 
-    public function types()
-    {
-        return [
-            'newSubscription' => [
-                'title' => 'Novo inscrito',
-                'text' => '{name} se cadastrou no seu site!',
-                'url' => '/admin/subscription/'
-            ],
-            'newMessage' => [
-                'title' => 'Nova Mensagem',
-                'text' => '{name} te enviou uma mensagem!',
-                'url' => '/messages/{id}'
-            ],
-        ];
-    }
+    public static $rules = [
+        'title' => 'required',
+        'details' => 'required',
+        'flag' => 'required',
+        'user_id' => 'required',
+    ];
+    // /**
+    //  * @inheritdoc
+    //  */
+    // public $timestamps = false;
 
-    /**
-     * Gera uma Nova Notificação para o Alvo
-     *
-     * @param  [type] $target
-     * @param  [type] $typeNotification
-     * @param  array  $data
-     * @return void
-     */
-    public static function generate($target, $typeNotification, $data = [])
-    {
-        // @todo
-        // self::create([
+    // /**
+    //  * @inheritdoc
+    //  */
+    // protected $fillable = [
+    //     'value',
+    // ];
 
-        // ]);
-    }
+    // public function types()
+    // {
+    //     return [
+    //         'newSubscription' => [
+    //             'title' => 'Novo inscrito',
+    //             'text' => '{name} se cadastrou no seu site!',
+    //             'url' => '/admin/subscription/'
+    //         ],
+    //         'newMessage' => [
+    //             'title' => 'Nova Mensagem',
+    //             'text' => '{name} te enviou uma mensagem!',
+    //             'url' => '/messages/{id}'
+    //         ],
+    //     ];
+    // }
 
-    /**
-     * @inheritdoc
-     */
-    public static function boot()
-    {
-        parent::boot();
+    // /**
+    //  * Gera uma Nova Notificação para o Alvo
+    //  *
+    //  * @param  [type] $target
+    //  * @param  [type] $typeNotification
+    //  * @param  array  $data
+    //  * @return void
+    //  */
+    // public static function generate($target, $typeNotification, $data = [])
+    // {
+    //     // @todo
+    //     // self::create([
 
-        static::deleting(
-            function (self $tag) {
-                $tag->posts()->detach();
-            }
-        );
-    }
+    //     // ]);
+    // }
 
-    /**
-     * @inheritdoc
-     */
-    public function newEloquentBuilder($query): NotificationBuilder
-    {
-        return new NotificationBuilder($query);
-    }
+    // /**
+    //  * @inheritdoc
+    //  */
+    // public static function boot()
+    // {
+    //     parent::boot();
 
-    /**
-     * @inheritdoc
-     */
-    public function newQuery(): NotificationBuilder
-    {
-        return parent::newQuery();
-    }
+    //     static::deleting(
+    //         function (self $tag) {
+    //             $tag->posts()->detach();
+    //         }
+    //     );
+    // }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function posts()
-    {
-        return $this->belongsToMany(Post::class, Tables::TABLE_POSTS_TAGS);
-    }
+    // /**
+    //  * @inheritdoc
+    //  */
+    // public function newEloquentBuilder($query): NotificationBuilder
+    // {
+    //     return new NotificationBuilder($query);
+    // }
 
-    /**
-     * Setter for the 'value' attribute.
-     *
-     * @param  string $value
-     * @return $this
-     */
-    public function setValueAttribute(string $value)
-    {
-        $this->attributes['value'] = trim(str_replace(' ', '_', strtolower($value)));
+    // /**
+    //  * @inheritdoc
+    //  */
+    // public function newQuery(): NotificationBuilder
+    // {
+    //     return parent::newQuery();
+    // }
 
-        return $this;
-    }
+    // /**
+    //  * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    //  */
+    // public function posts()
+    // {
+    //     return $this->belongsToMany(Post::class, Tables::TABLE_POSTS_TAGS);
+    // }
 
-    /**
-     * @return NotificationEntity
-     */
-    public function toEntity(): NotificationEntity
-    {
-        return new NotificationEntity([
-            'id' => $this->id,
-            'value' => $this->value,
-        ]);
-    }
+    // /**
+    //  * Setter for the 'value' attribute.
+    //  *
+    //  * @param  string $value
+    //  * @return $this
+    //  */
+    // public function setValueAttribute(string $value)
+    // {
+    //     $this->attributes['value'] = trim(str_replace(' ', '_', strtolower($value)));
+
+    //     return $this;
+    // }
+
+    // /**
+    //  * @return NotificationEntity
+    //  */
+    // public function toEntity(): NotificationEntity
+    // {
+    //     return new NotificationEntity([
+    //         'id' => $this->id,
+    //         'value' => $this->value,
+    //     ]);
+    // }
 }

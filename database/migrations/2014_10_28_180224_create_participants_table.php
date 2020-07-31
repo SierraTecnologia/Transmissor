@@ -17,8 +17,13 @@ class CreateParticipantsTable extends Migration
         Schema::create(
             Models::table('participants'), function (Blueprint $table) {
                 $table->increments('id');
-                $table->integer('thread_id')->unsigned();
-                $table->integer('user_id')->unsigned();
+                // threads
+                $table->string('messageable_id');
+                $table->string('messageable_type');
+    
+                // actor
+                $table->string('actorable_id');
+                $table->string('actorable_type');
                 $table->timestamp('last_read')->nullable();
                 $table->timestamps();
             }

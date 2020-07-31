@@ -17,10 +17,13 @@ class CreateActivitiesTable extends Migration {
             $table->string('causer')->index();
             $table->string('type')->index();
             $table->string('indentifier')->index();
-            $table->integer('user_id')->unsigned()->index();
             $table->text('data')->nullable();
-            $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+			
+
+            // activitable
+            $table->string('activitable_id');
+            $table->string('activitable_type');
+			$table->timestamps();
         });
 	}
 

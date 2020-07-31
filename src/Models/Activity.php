@@ -23,3 +23,18 @@ class Activity extends Model
         return unserialize($value);
     }
 }
+// public $table = "activities";
+
+// public $primaryKey = "id";
+
+// public $timestamps = true;
+
+// public $fillable = [
+//     'user_id',
+//     'description',
+//     'request',
+// ];
+
+// public static $rules = [
+//     'request' => 'required',
+// ];

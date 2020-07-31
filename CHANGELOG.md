@@ -4,7 +4,8 @@
 
 ### Added
 
-[ ] 
+[ ] Activities
+[x] Notifications
 
 ## [v0.0.1 (2020-07-19)](https://github.com/sierratecnologia/transmissor/compare/...0.0.1)
 

@@ -81,9 +81,18 @@ class TransmissorProvider extends ServiceProvider
                 'namespace' => '\Transmissor\Http\Controllers',
                 'prefix' => \Illuminate\Support\Facades\Config::get('application.routes.main', ''),
                 'as' => 'rica.',
-                // 'middleware' => 'rica',
             ], function ($router) {
                 include __DIR__.'/../routes/web.php';
+            }
+        );
+        Route::group(
+            [
+                'namespace' => '\Transmissor\Http\Controllers\RiCa',
+                'prefix' => \Illuminate\Support\Facades\Config::get('application.routes.rica', 'rica'),
+                'as' => 'rica.',
+                'middleware' => 'rica',
+            ], function ($router) {
+                include __DIR__.'/../routes/rica.php';
             }
         );
     }
