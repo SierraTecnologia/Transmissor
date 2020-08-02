@@ -1,115 +1,76 @@
 <?php
+// /**
+//  * Include App Routes
+//  */
+// $loadingRoutes = [
+//     'notification',
+//     'messages',
+// ];
 
-Route::group(
-    ['middleware' => ['web']], function () {
+// Route::group(
+//     ['middleware' => ['web']], function () use ($loadingRoutes) {
+//         Route::group(['middleware' => 'auth'], function () use ($loadingRoutes) {
 
-        Route::prefix('transmissor')->group(
-            function () {
-                Route::group(
-                    ['as' => 'transmissor.'], function () {
+//             Route::prefix('transmissor')->group(
+//                 function () use ($loadingRoutes) {
+//                     Route::group(
+//                         ['as' => 'transmissor.'], function () use ($loadingRoutes) {
 
-                        // /**
-                        //  * 
-                        //  */
-                        // Route::get('home', 'HomeController@index')->name('home');
-                        // Route::get('persons', 'HomeController@persons')->name('persons');
+//                             // /**
+//                             //  * 
+//                             //  */
+//                             // Route::get('home', 'HomeController@index')->name('home');
+//                             // Route::get('persons', 'HomeController@persons')->name('persons');
 
-                        // /**
-                        //  * Track
-                        //  */
-                        // Route::prefix('track')->group(
-                        //     function () {
-                        //         Route::namespace('Track')->group(
-                        //             function () {
-                        //                 Route::group(
-                        //                     ['as' => 'track.'], function () {
+//                             // /**
+//                             //  * Track
+//                             //  */
+//                             // Route::prefix('track')->group(
+//                             //     function () {
+//                             //         Route::namespace('Track')->group(
+//                             //             function () {
+//                             //                 Route::group(
+//                             //                     ['as' => 'track.'], function () {
 
-                        //                         Route::get('person', 'PersonController@index')->name('person');
+//                             //                         Route::get('person', 'PersonController@index')->name('person');
 
-                        //                     }
-                        //                 );
-                        //             }
-                        //         );
-                        //     }
-                        // );
+//                             //                     }
+//                             //                 );
+//                             //             }
+//                             //         );
+//                             //     }
+//                             // );
 
-                    }
-                );
-            }
-        );
+//                         }
+//                     );
+//                 }
+//             );
+
+//             /*
+//             |--------------------------------------------------------------------------
+//             | User Routes
+//             |--------------------------------------------------------------------------
+//             */
+//             foreach ($loadingRoutes as $loadingRoute) {
+//                 if (file_exists(dirname(__FILE__) . DIRECTORY_SEPARATOR . "user". DIRECTORY_SEPARATOR . $loadingRoute.".php")) {
+//                     include dirname(__FILE__) . DIRECTORY_SEPARATOR . "user". DIRECTORY_SEPARATOR . $loadingRoute.".php";
+//                 }
+//             }    
 
 
+//             /*
+//             |--------------------------------------------------------------------------
+//             | Admin Routes
+//             |--------------------------------------------------------------------------
+//             */
+//             foreach ($loadingRoutes as $loadingRoute) {
+//                 if (file_exists(dirname(__FILE__) . DIRECTORY_SEPARATOR . "admin". DIRECTORY_SEPARATOR . $loadingRoute.".php")) {
+//                     include dirname(__FILE__) . DIRECTORY_SEPARATOR . "admin". DIRECTORY_SEPARATOR . $loadingRoute.".php";
+//                 }
+//             }    
 
 
+//         });
+//     }
+// );
 
-        Route::group(
-            ['as' => 'profile.'], function () {
-
-                Route::namespace('User')->group(
-                    function () {
-                        // Route::group(
-                        //     ['middleware' => 'admin.user'], function () {
-
-                                Route::get('/messages', 'MessagesController@index')->name('messages.index');
-                                Route::get('/messages/to/{id}', 'MessagesController@create')->name('messages.create');
-                                Route::post('/messages', 'MessagesController@store')->name('messages.store');
-                                Route::get('/messages/{id}', 'MessagesController@show')->name('messages.show');
-                                Route::put('/messages/{id}', 'MessagesController@update')->name('messages.update');
-
-                                Route::group(['prefix' => 'notifications'], function () {
-                                    Route::get('/', 'NotificationController@index');
-                                    Route::get('{uuid}/read', 'NotificationController@read');
-                                    Route::delete('{uuid}/delete', 'NotificationController@delete');
-                                    Route::get('search', 'NotificationController@search');
-
-                                    /**
-                                     * Veio separdo
-                                     */
-
-                                    Route::get('/unread', 'NotificationsController@unread')->name('notifications.unread');
-                                    // Route::get('/', 'NotificationsController@index')->name('notifications.index');
-                                    Route::get('/count', 'NotificationsController@count')->name('notifications.count');
-
-                                });
-                            }
-                        // );
-                    // }
-                );
-            }
-        );
-
-    }
-);
-
-/*
-|--------------------------------------------------------------------------
-| Notification Routes
-|--------------------------------------------------------------------------
-*/
-
-Route::group(['middleware' => 'auth'], function () {
-
-    /*
-    |--------------------------------------------------------------------------
-    | User Routes
-    |--------------------------------------------------------------------------
-    */
-    Route::group(['prefix' => 'user', 'namespace' => 'User'], function () {
-        Route::group(['prefix' => 'notifications'], function () {
-            Route::get('/', 'NotificationController@index');
-            Route::get('{uuid}/read', 'NotificationController@read');
-            Route::delete('{uuid}/delete', 'NotificationController@delete');
-            Route::get('search', 'NotificationController@search');
-        });
-    });
-
-    /*
-    |--------------------------------------------------------------------------
-    | Admin Routes
-    |--------------------------------------------------------------------------
-    */
-    Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function () {
-        Route::resource('notifications', 'Admin\NotificationController', ['except' => ['show'], 'as' => 'admin']);
-        Route::post('notifications/search', 'Admin\NotificationController@search');
-    });
-});

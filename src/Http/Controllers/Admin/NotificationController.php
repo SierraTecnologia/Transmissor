@@ -23,7 +23,7 @@ class NotificationController extends Controller
     public function index(Request $request)
     {
         $notifications = $this->service->paginated();
-        return view('admin.notifications.index')->with('notifications', $notifications);
+        return view('transmissor::admin.notifications.index')->with('notifications', $notifications);
     }
 
     /**
@@ -34,7 +34,7 @@ class NotificationController extends Controller
     public function search(Request $request)
     {
         $notifications = $this->service->search($request->search, null);
-        return view('admin.notifications.index')->with('notifications', $notifications);
+        return view('transmissor::admin.notifications.index')->with('notifications', $notifications);
     }
 
     /**
@@ -44,7 +44,7 @@ class NotificationController extends Controller
      */
     public function create()
     {
-        return view('admin.notifications.create');
+        return view('transmissor::admin.notifications.create');
     }
 
     /**
@@ -75,7 +75,7 @@ class NotificationController extends Controller
     public function edit($id)
     {
         $notification = $this->service->find($id);
-        return view('admin.notifications.edit')->with('notification', $notification);
+        return view('transmissor::admin.notifications.edit')->with('notification', $notification);
     }
 
     /**

@@ -29,6 +29,6 @@ class NotificationCreateRequest extends FormRequest
      */
     public function rules()
     {
-        return Notification::$rules;
+        return (new Notification)->rules;
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace TransmissorFacades;
+namespace Transmissor\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

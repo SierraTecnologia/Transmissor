@@ -5,7 +5,7 @@ namespace Transmissor\Providers;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
-class ActivityServiceProvider extends ServiceProvider
+class NotificationServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap any application services.
@@ -22,10 +22,10 @@ class ActivityServiceProvider extends ServiceProvider
     {
         $loader = \Illuminate\Foundation\AliasLoader::getInstance();
 
-        $loader->alias('Activity', \Transmissor\Facades\Activity::class);
+        $loader->alias('Notifications', \Transmissor\Facades\Notifications::class);
 
-        $this->app->singleton('ActivityService', function ($app) {
-            return app(\Transmissor\Services\ActivityService::class);
+        $this->app->singleton('NotificationService', function ($app) {
+            return app(\Transmissor\Services\NotificationService::class);
         });
     }
 }

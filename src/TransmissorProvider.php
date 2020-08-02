@@ -24,6 +24,7 @@ class TransmissorProvider extends ServiceProvider
 {
     use ConsoleTools;
 
+    public $packageName = 'transmissor';
     const pathVendor = 'sierratecnologia/transmissor';
 
     public static $aliasProviders = [
@@ -34,6 +35,8 @@ class TransmissorProvider extends ServiceProvider
 
         // \Support\SupportProviderService::class,
         \Telefonica\TelefonicaProvider::class,
+        \Transmissor\Providers\NotificationServiceProvider::class,
+        \Transmissor\Providers\ActivityServiceProvider::class,
 
         
     ];
@@ -42,7 +45,14 @@ class TransmissorProvider extends ServiceProvider
      * Rotas do Menu
      */
     public static $menuItens = [
-
+        'Admin' => [
+            [
+                'text'        => 'Notifications',
+                'url'         => 'root/notifications',
+                'icon'        => 'puzzle-piece',
+                'level'       => 3,
+            ],
+        ],
     ];
 
     /**
@@ -76,25 +86,7 @@ class TransmissorProvider extends ServiceProvider
         /**
          * Transmissor; Routes
          */
-        Route::group(
-            [
-                'namespace' => '\Transmissor\Http\Controllers',
-                'prefix' => \Illuminate\Support\Facades\Config::get('application.routes.main', ''),
-                'as' => 'rica.',
-            ], function ($router) {
-                include __DIR__.'/../routes/web.php';
-            }
-        );
-        Route::group(
-            [
-                'namespace' => '\Transmissor\Http\Controllers\RiCa',
-                'prefix' => \Illuminate\Support\Facades\Config::get('application.routes.rica', 'rica'),
-                'as' => 'rica.',
-                'middleware' => 'rica',
-            ], function ($router) {
-                include __DIR__.'/../routes/rica.php';
-            }
-        );
+        $this->loadRoutesForRiCa(__DIR__.'/../routes');
     }
 
     /**
@@ -106,7 +98,6 @@ class TransmissorProvider extends ServiceProvider
         
 
         $this->setProviders();
-        // $this->routes();
 
 
 

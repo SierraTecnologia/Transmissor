@@ -38,7 +38,7 @@ class ActivityController extends Controller
         $hot_topics = HotTopic::fetchAll();
         $images = Image::fromActivities($activities);
 
-        return view('siravel::components.modules.activities.index', compact('activities', 'links', 'banners', 'active_users', 'hot_topics', 'images'));
+        return view('transmissor::users.activities.index', compact('activities', 'links', 'banners', 'active_users', 'hot_topics', 'images'));
     }
 
 }

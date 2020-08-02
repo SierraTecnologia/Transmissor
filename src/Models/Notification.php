@@ -36,7 +36,7 @@ class Notification extends Model
         'is_read',
     ];
 
-    public static $rules = [
+    public $rules = [
         'title' => 'required',
         'details' => 'required',
         'flag' => 'required',
