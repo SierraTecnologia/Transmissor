@@ -1,4 +1,4 @@
-<div class="box">
+<div class="box card">
     <div class="padding-md">
         <div class="list-group text-center">
           <a href="{{ route('profile.messages.index') }}" class="list-group-item big {{ active_class(if_uri_pattern(['messages*'])) }}">
