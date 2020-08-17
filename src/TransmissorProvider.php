@@ -48,7 +48,7 @@ class TransmissorProvider extends ServiceProvider
         'Admin' => [
             [
                 'text'        => 'Notifications',
-                'url'         => 'root/notifications',
+                'route'       => 'admin.notifications.index',
                 'icon'        => 'puzzle-piece',
                 'level'       => 3,
             ],
