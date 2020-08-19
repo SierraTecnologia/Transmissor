@@ -2,15 +2,14 @@
 
 namespace Transmissor\Services;
 
-use DB;
-use Auth;
-use Session;
-use Exception;
+use App\Models\Role;
 use App\Models\User;
-use Facilitador\Models\Role;
-use Siravel\Events\UserRegisteredEmail;
-use Facilitador\Notifications\ActivateUserEmail;
+use Auth;
+use DB;
+use Exception;
 use Illuminate\Support\Facades\Schema;
+use Session;
+use Siravel\Events\UserRegisteredEmail;
 
 class UserService
 {

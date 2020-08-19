@@ -1,8 +1,8 @@
 <?php
 
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
 use TransmissorServices\NotificationService;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class NotificationServiceTest extends TestCase
 {
