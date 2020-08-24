@@ -2,14 +2,14 @@
 
 namespace Transmissor\Models;
 
-use Population\Manipule\Builders\CommentBuilder;
 use App\Contants\Tables;
-use Population\Manipule\Entities\CommentEntity;
-use Illuminate\Database\Eloquent\Collection;
-use Support\Models\Base;
-use Transmissor\Models\Post;
 use Carbon\Carbon;
 use Finder\Models\Reference;
+use Illuminate\Database\Eloquent\Collection;
+use Population\Manipule\Builders\CommentBuilder;
+use Population\Manipule\Entities\CommentEntity;
+use Support\Models\Base;
+use Transmissor\Models\Post;
 
 /**
  * Class Comment.

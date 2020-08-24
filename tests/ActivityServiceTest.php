@@ -11,7 +11,7 @@ class ActivityServiceTest extends TestCase
 
     protected $service;
 
-    public function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         $this->service = $this->app->make(ActivityService::class);

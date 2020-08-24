@@ -9,7 +9,7 @@ class NotificationIntegrationTest extends TestCase
     use DatabaseMigrations;
     use WithoutMiddleware;
 
-    public function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
