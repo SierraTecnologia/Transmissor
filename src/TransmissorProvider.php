@@ -2,23 +2,22 @@
 
 namespace Transmissor;
 
-use Illuminate\Foundation\AliasLoader;
-use Illuminate\Support\ServiceProvider;
-use Transmissor\Services\TransmissorService;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\View;
-
-use Log;
 use App;
 use Config;
-use Route;
+use Illuminate\Contracts\Events\Dispatcher;
+use Illuminate\Foundation\AliasLoader;
 use Illuminate\Routing\Router;
 
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\ServiceProvider;
+use Log;
 use Muleta\Traits\Providers\ConsoleTools;
 
-use Transmissor\Facades\Transmissor as TransmissorFacade;
-use Illuminate\Contracts\Events\Dispatcher;
+use Route;
 
+use Transmissor\Facades\Transmissor as TransmissorFacade;
+use Transmissor\Services\TransmissorService;
 
 class TransmissorProvider extends ServiceProvider
 {
@@ -50,6 +49,7 @@ class TransmissorProvider extends ServiceProvider
                 'text'        => 'Notifications',
                 'route'       => 'admin.notifications.index',
                 'icon'        => 'puzzle-piece',
+                'section'     => 'painel',
                 'level'       => 3,
             ],
         ],
@@ -178,7 +178,6 @@ class TransmissorProvider extends ServiceProvider
 
         $this->loadViews();
         $this->loadTranslations();
-
     }
 
     private function loadViews()
@@ -191,7 +190,6 @@ class TransmissorProvider extends ServiceProvider
             $viewsPath => base_path('resources/views/vendor/transmissor'),
             ], ['views',  'sitec', 'sitec-views']
         );
-
     }
     
     private function loadTranslations()
@@ -209,7 +207,7 @@ class TransmissorProvider extends ServiceProvider
 
 
     /**
-     * 
+     *
      */
     private function loadLogger()
     {
@@ -221,5 +219,4 @@ class TransmissorProvider extends ServiceProvider
             ]
         );
     }
-
 }
