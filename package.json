@@ -22,6 +22,7 @@
         "vue": "^2.5.17"
     },
     "dependencies": {
+        "@growthbunker/vuetimeline": "^0.1.17",
         "gojs": "^2.0.9",
         "laravel-echo": "^1.5.3",
         "socket.io-client": "^2.2.0",
