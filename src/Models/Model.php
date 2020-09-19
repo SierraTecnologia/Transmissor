@@ -13,7 +13,8 @@ class Model extends EloquentModel
     /**
      * Provides public access to get the raw attribute value from the model.
      * Used in areas where no mutations are required but performance is critical.
-     * @param $key
+     *
+     * @param  $key
      * @return mixed
      */
     public function getRawAttribute($key)
@@ -25,7 +26,7 @@ class Model extends EloquentModel
     {
         parent::boot();
 
-        if (isset(self::$organizationPerspective) && self::$organizationPerspective){
+        if (isset(self::$organizationPerspective) && self::$organizationPerspective) {
 
             if(!$user = Auth::user()) {
                 $user = Business::getViaParamsToken();
@@ -33,9 +34,11 @@ class Model extends EloquentModel
 
             // Reduz o nivel global a nivel de Business
             if (!$user->isAdmin() || !Auth::check()) {
-                static::addGlobalScope('user', function (Builder $builder) use ($user) {
-                    $builder->where(self::getTableName().'.user_id', '=', $user->id);
-                });
+                static::addGlobalScope(
+                    'user', function (Builder $builder) use ($user) {
+                        $builder->where(self::getTableName().'.user_id', '=', $user->id);
+                    }
+                );
             }
 
             // Reduz o nivel de business a nivel de cliente da compania 

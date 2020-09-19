@@ -21,16 +21,20 @@ trait UserActivityHelper
     {
         $followings = [];
         if (!is_null($this->followings)) {
-            $followings = $this->followings->map(function ($user, $key) {
-                return 'u' . $user->id;
-            })->toArray();
+            $followings = $this->followings->map(
+                function ($user, $key) {
+                    return 'u' . $user->id;
+                }
+            )->toArray();
         }
 
         $subscribed_blogs = [];
         if (!is_null($this->subscribes)) {
-            $subscribed_blogs = $this->subscribes->map(function ($blog, $key) {
-                return 'b' . $blog->id;
-            })->toArray();
+            $subscribed_blogs = $this->subscribes->map(
+                function ($blog, $key) {
+                    return 'b' . $blog->id;
+                }
+            )->toArray();
         }
 
         return array_merge(['u' . $this->id], $followings, $subscribed_blogs);
@@ -39,7 +43,7 @@ trait UserActivityHelper
     public function activitiesByCausers($causers)
     {
         return Activity::whereIn('causer', $causers)
-                    ->recent()
-                    ->paginate(50);
+            ->recent()
+            ->paginate(50);
     }
 }

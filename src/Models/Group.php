@@ -21,14 +21,16 @@ class Group extends Model
 
     public static function updateOrCreateFromChat($chat, string $language = 'es', string $currency = 'eur')
     {
-        $group = self::updateOrCreate([
+        $group = self::updateOrCreate(
+            [
             'telegram_id' => $chat['id'],
             'type' => $chat['type'],
-        ], [
+            ], [
             'title' => $chat['title'],
             'language' => $language,
             'currency' => $currency,
-        ]);
+            ]
+        );
 
         return $group;
     }

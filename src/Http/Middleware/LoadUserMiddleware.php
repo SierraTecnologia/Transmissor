@@ -17,8 +17,8 @@ class LoadUserMiddleware implements Received
      * Handle an incoming message.
      *
      * @param IncomingMessage $message
-     * @param callable $next
-     * @param BotMan $bot
+     * @param callable        $next
+     * @param BotMan          $bot
      *
      * @return mixed
      */
@@ -61,7 +61,7 @@ class LoadUserMiddleware implements Received
 
     /**
      * @param \BotMan\BotMan\Messages\Incoming\IncomingMessage $message
-     * @param \BotMan\BotMan\BotMan $bot
+     * @param \BotMan\BotMan\BotMan                            $bot
      *
      * @throws \Transmissor\Exceptions\PrivateConversationNotAllowedException
      * @throws \BotMan\BotMan\Exceptions\Base\BotManException
@@ -79,7 +79,7 @@ class LoadUserMiddleware implements Received
 
     /**
      * @param \BotMan\BotMan\Messages\Incoming\IncomingMessage $message
-     * @param \BotMan\BotMan\BotMan $bot
+     * @param \BotMan\BotMan\BotMan                            $bot
      *
      * @throws \Transmissor\Exceptions\InteractingWithBotException
      * @throws \BotMan\BotMan\Exceptions\Base\BotManException
@@ -96,7 +96,7 @@ class LoadUserMiddleware implements Received
 
     /**
      * @param \BotMan\BotMan\Messages\Incoming\IncomingMessage $message
-     * @param \BotMan\BotMan\BotMan $bot
+     * @param \BotMan\BotMan\BotMan                            $bot
      *
      * @throws \Transmissor\Exceptions\MissingGroupException
      * @throws \BotMan\BotMan\Exceptions\Base\BotManException

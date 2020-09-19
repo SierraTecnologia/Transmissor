@@ -123,22 +123,29 @@ class Comment extends Base
     // @todo fazer
     public static function registerCommentForProject($comment, $id, $type, $projectUrl = false)
     {
-        $comment =  self::firstOrCreate([
+        $comment =  self::firstOrCreate(
+            [
             'content' => $comment->body,
             'commentable_id' => $id,
             'commentable_type' => $type,
             'created_at' => $comment->created,
             'updated_at' => $comment->updated
-        ]);
+            ]
+        );
 
         if ($projectUrl) {
-            if (!$reference = Reference::where([
+            if (!$reference = Reference::where(
+                [
                 'code' => $projectUrl
-            ])->first()) {
-                $reference = Reference::create([
+                ]
+            )->first()
+            ) {
+                $reference = Reference::create(
+                    [
                     'code' => $projectUrl,
                     'name' => $projectUrl,
-                ]);
+                    ]
+                );
             }
             if (!$comment->references()->where('reference_id', $reference->id)->first()) {
                 $comment->references()->save(

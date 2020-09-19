@@ -12,7 +12,7 @@ class MailNotification extends Notification implements ShouldQueue
     /**
      * Get the notification's channels.
      *
-     * @param  mixed  $notifiable
+     * @param  mixed $notifiable
      * @return array|string
      */
     public function via($notifiable)
@@ -22,13 +22,16 @@ class MailNotification extends Notification implements ShouldQueue
 
     /**
      * Create a new mail message.
+     *
      * @return MailMessage
      */
     protected function newMailMessage()
     {
-        return (new MailMessage)->view([
+        return (new MailMessage)->view(
+            [
             'html' => 'vendor.notifications.email',
             'text' => 'vendor.notifications.email-plain'
-        ]);
+            ]
+        );
     }
 }

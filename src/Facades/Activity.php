@@ -11,5 +11,8 @@ class Activity extends Facade
      *
      * @return string
      */
-    protected static function getFacadeAccessor() { return 'ActivityService'; }
+    protected static function getFacadeAccessor()
+    {
+        return 'ActivityService'; 
+    }
 }

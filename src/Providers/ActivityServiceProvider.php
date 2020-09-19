@@ -24,8 +24,10 @@ class ActivityServiceProvider extends ServiceProvider
 
         $loader->alias('Activity', \Transmissor\Facades\Activity::class);
 
-        $this->app->singleton('ActivityService', function ($app) {
-            return app(\Transmissor\Services\ActivityService::class);
-        });
+        $this->app->singleton(
+            'ActivityService', function ($app) {
+                return app(\Transmissor\Services\ActivityService::class);
+            }
+        );
     }
 }

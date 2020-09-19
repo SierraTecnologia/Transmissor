@@ -14,7 +14,7 @@ class ActivityService
     /**
      * All activities
      *
-     * @return  Collection
+     * @return Collection
      */
     public function getByUser($userId, $paginate = null)
     {
@@ -31,21 +31,23 @@ class ActivityService
      * Create an activity record
      *
      * @param  string $description
-     * @return  Activity
+     * @return Activity
      */
     public function log($description = '')
     {
         $payload = [
             'user_id' => auth()->id(),
             'description' => $description,
-            'request' => json_encode([
+            'request' => json_encode(
+                [
                 'url' => request()->url(),
                 'method' => request()->method(),
                 'query' => request()->fullUrl(),
                 'secure' => request()->secure(),
                 'client_ip' => request()->ip(),
                 'payload' => request()->all(),
-            ]),
+                ]
+            ),
         ];
 
         return $this->model->create($payload);

@@ -11,5 +11,8 @@ class Notifications extends Facade
      *
      * @return string
      */
-    protected static function getFacadeAccessor() { return 'NotificationService'; }
+    protected static function getFacadeAccessor()
+    {
+        return 'NotificationService'; 
+    }
 }

@@ -12,7 +12,9 @@ class SendRemindersCommand extends Command
 
     protected $description = 'Send the reminders for the current day and time';
 
-    /** @var \Transmissor\Services\TransmissorService  */
+    /**
+     * @var \Transmissor\Services\TransmissorService  
+     */
     protected $transmissorService;
 
     // /** @var \BotMan\BotMan\BotMan */

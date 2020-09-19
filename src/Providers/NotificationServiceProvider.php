@@ -24,8 +24,10 @@ class NotificationServiceProvider extends ServiceProvider
 
         $loader->alias('Notifications', \Transmissor\Facades\Notifications::class);
 
-        $this->app->singleton('NotificationService', function ($app) {
-            return app(\Transmissor\Services\NotificationService::class);
-        });
+        $this->app->singleton(
+            'NotificationService', function ($app) {
+                return app(\Transmissor\Services\NotificationService::class);
+            }
+        );
     }
 }
