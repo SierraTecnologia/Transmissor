@@ -8,7 +8,7 @@ use Finder\Models\Reference;
 use Illuminate\Database\Eloquent\Collection;
 use Population\Manipule\Builders\CommentBuilder;
 use Population\Manipule\Entities\CommentEntity;
-use Support\Models\Base;
+use Pedreiro\Models\Base;
 use Transmissor\Models\Post;
 
 /**
