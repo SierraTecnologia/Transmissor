@@ -1,10 +1,10 @@
 <?php
 
-namespace Transmissor\Http\Controllers\Users;
+namespace Transmissor\Http\Controllers\User;
 
+use BotMan\BotMan\BotMan;
 use Transmissor\Conversations\StartConversation;
 use Transmissor\Http\Controllers\Controller;
-use BotMan\BotMan\BotMan;
 
 class StoreController extends Controller
 {
