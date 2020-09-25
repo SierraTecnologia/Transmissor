@@ -10,7 +10,7 @@
                 <a class="btn btn-primary raw-margin-right-8" href="{!! url('admin/notifications/create') !!}">Create Notification</a>
                 <form method="post" action="{!! url('admin/notifications/search') !!}">
                     {!! csrf_field() !!}
-                    <input class="form-control form-inline pull-right" name="search" value="{{ request('search') }}" placeholder="Search">
+                    <input class="form-control form-inline float-right" name="search" value="{{ request('search') }}" placeholder="Search">
                 </form>
             </div>
         </div>

@@ -6,10 +6,10 @@ Minhas Mensagens | @parent
 
 @section('content')
 
-<div class="messages">
+<div class="messages row">
 
     <div class="col-md-3 main-col">
-        @include('facilitador::users.messages._nav')
+        @include('transmissor::users.messages._nav')
     </div>
 
     <div class="col-md-9  left-col ">
@@ -32,7 +32,7 @@ Minhas Mensagens | @parent
                             <?php
                                 $participant = $thread->participant();
                             ?>
-                            <div class="avatar pull-left">
+                            <div class="avatar float-left">
                                 <a href="{{ route('components.actors.profile.show', [$participant->id]) }}">
                                     <img class="media-object img-thumbnail avatar" alt="{{ $participant->name }}" src="{{ $participant->present()->gravatar }}"  style="width:48px;height:48px;"/>
                                 </a>
@@ -61,7 +61,7 @@ Minhas Mensagens | @parent
                                 <div class="message-meta">
                                     <p>
 
-                                    <a href="{{ route('messages.show', $thread->id) }}" class="normalize-link-color ">
+                                    <a href="{{ route('profile.transmissor.messages.show', $thread->id) }}" class="normalize-link-color ">
 
                                         @if ($unread_messagesCount > 0)
 

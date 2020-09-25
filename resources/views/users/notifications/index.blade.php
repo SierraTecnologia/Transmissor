@@ -29,7 +29,7 @@
                      <li class="list-group-item media" style="margin-top: 0px;">
 
                         @if ((count($notification->topic) || $notification->type=='follow') && count($notification->fromUser))
-                            <div class="avatar pull-left">
+                            <div class="avatar float-left">
                                 <a href="{{ route('users.show', [$notification->from_user_id]) }}">
                                     <img class="media-object img-thumbnail avatar" alt="{{{ $notification->fromUser->name }}}" src="{{ $notification->fromUser->present()->gravatar }}"  style="width:38px;height:38px;"/>
                                 </a>

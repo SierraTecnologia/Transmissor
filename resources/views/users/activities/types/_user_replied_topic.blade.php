@@ -1,5 +1,5 @@
 <li class="list-group-item media" >
-    <div class="avatar pull-left">
+    <div class="avatar float-left">
         <a href="{{ route('users.show', [$activity->user->id]) }}">
             <img class="media-object img-thumbnail avatar" alt="{{ $activity->user->name }}" src="{{ $activity->user->present()->gravatar }}" />
         </a>
@@ -32,7 +32,7 @@
                 </a>
             @endif
 
-             <span class="meta pull-right">
+             <span class="meta float-right">
                  <span class="timeago">{{ $activity->created_at }}</span>
             </span>
         </div>

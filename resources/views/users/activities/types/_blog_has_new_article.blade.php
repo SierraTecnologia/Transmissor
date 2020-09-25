@@ -1,5 +1,5 @@
 <li class="list-group-item media" >
-    <div class="avatar pull-left">
+    <div class="avatar float-left">
         <a href="{{ $activity->data['blog_link'] }}">
             <img class="media-object img-thumbnail avatar" alt="{{ $activity->data['blog_name'] }}" src="{{ img_crop($activity->data['blog_cover'], 224, 224) }}" />
         </a>
@@ -18,7 +18,7 @@
             </a>
             no blog <a href="{{ $activity->data['blog_link'] }}">{{ $activity->data['blog_name'] }}</a>
 
-             <span class="meta pull-right">
+             <span class="meta float-right">
                  <span class="timeago">{{ $activity->created_at }}</span>
             </span>
 

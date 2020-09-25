@@ -115,7 +115,7 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary pull-right save">
+            <button type="submit" class="btn btn-primary float-right save">
                 {{ __('facilitador::generic.save') }}
             </button>
         </form>

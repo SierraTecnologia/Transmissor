@@ -2,19 +2,19 @@
 
 namespace Transmissor\Http\Controllers;
 
-use App\Models\User;
-use Carbon\Carbon;
+use App\Http\Requests\MessageRequest;
+use App\Jobs\SendNotifyMail;
 use App\Models\Message;
 use App\Models\Participant;
 use App\Models\Thread;
+use App\Models\User;
+use App\Phphub\Markdown\Markdown;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Http\Request;
-use App\Phphub\Markdown\Markdown;
-use App\Jobs\SendNotifyMail;
-use App\Http\Requests\MessageRequest;
 
 class MessagesController extends Controller
 {
@@ -25,7 +25,7 @@ class MessagesController extends Controller
             Auth::user()->message_count = 0;
             Auth::user()->save();
         }
-        return view('messages.index', compact('threads', 'currentUserId'));
+        return view('transmissor::users.messages.index', compact('threads', 'currentUserId'));
     }
 
     public function show($id)
@@ -44,19 +44,23 @@ class MessagesController extends Controller
         }
         $thread->markAsRead(Auth::id());
 
-        return view('messages.show', compact('thread', 'participant', 'messages', 'unread_message_count'));
+        return view('transmissor::users.messages.show', compact('thread', 'participant', 'messages', 'unread_message_count'));
     }
 
-    public function create($id)
+    public function create($id = null)
     {
-        $recipient = User::findOrFail($id);
-
-        $thread = Thread::between([$recipient->id, Auth::id()])->first();
-        if ($thread) {
-            return redirect()->route('messages.show', $thread->id);
+        if ($id) {
+            $recipient = User::findOrFail($id);
+            $thread = Thread::between([$recipient->id, Auth::id()])->first();
+            if ($thread) {
+                return redirect()->route('profile.transmissor.messages.show', $thread->id);
+            }
+            return view('transmissor::users.messages.create', compact('recipient'));
         }
 
-        return view('messages.create', compact('recipient'));
+        $recipient = User::pluck('name');
+
+        return view('transmissor::users.messages.create', compact('recipient'));
     }
 
     public function createSecureMessage($id)
@@ -69,10 +73,10 @@ class MessagesController extends Controller
 
         $thread = Thread::between([$recipient->id, Auth::id()])->first();
         if ($thread) {
-            return redirect()->route('messages.show', $thread->id);
+            return redirect()->route('profile.transmissor.messages.show', $thread->id);
         }
 
-        return view('messages.create', compact('recipient'));
+        return view('transmissor::users.messages.create', compact('recipient'));
     }
 
     public function store(MessageRequest $request, Markdown $markdown)
@@ -88,10 +92,25 @@ class MessagesController extends Controller
 
         // Message
         $message = $markdown->convertMarkdownToHtml($request->message);
-        Message::create(['thread_id' => $thread->id, 'user_id' => Auth::id(), 'body' => $message]);
+        Message::create(
+            [
+                'messageable_type' => Thread::class,
+                'messageable_id' => $thread->id,
+                'actorable_type' => User::class,
+                'actorable_id' => Auth::id(),
+                'body' => $message
+            ]
+        );
 
         // Sender
-        $participant = Participant::firstOrCreate(['thread_id' => $thread->id, 'user_id' => Auth::id()]);
+        $participant = Participant::firstOrCreate(
+            [
+                'messageable_type' => Thread::class,
+                'messageable_id' => $thread->id,
+                'actorable_type' => User::class,
+                'actorable_id' => Auth::id()
+            ]
+        );
         $participant->last_read = new Carbon;
         $participant->save();
 
@@ -107,6 +126,6 @@ class MessagesController extends Controller
         $recipient->message_count++;
         $recipient->save();
 
-        return redirect()->route('messages.show', $thread->id);
+        return redirect()->route('profile.transmissor.messages.show', $thread->id);
     }
 }

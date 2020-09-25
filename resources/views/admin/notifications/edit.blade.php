@@ -35,7 +35,7 @@
 
                 <div class="raw-margin-top-24 form-group">
                     <div class="btn-toolbar justify-content-between">
-                        <button type="submit" class="btn btn-primary pull-right">Update</button>
+                        <button type="submit" class="btn btn-primary float-right">Update</button>
                         <a href="/admin/notifications" class="btn btn-secondary">Cancel</a>
                     </div>
                 </div>

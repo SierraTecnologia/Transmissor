@@ -12,7 +12,7 @@ class NotificationsController extends Controller
         if (Auth::user()->notification_count > 0 && Auth::user()->message_count == 0) {
             return redirect()->route('notifications.index');
         }
-        return redirect()->route('messages.index');
+        return redirect()->route('profile.transmissor.messages.index');
     }
 
     public function index(Request $request)

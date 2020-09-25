@@ -5,18 +5,21 @@ namespace Transmissor;
 use App;
 use Config;
 use Illuminate\Contracts\Events\Dispatcher;
+use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Foundation\AliasLoader;
-use Illuminate\Routing\Router;
 
+use Illuminate\Routing\Router;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Log;
+
 use Muleta\Traits\Providers\ConsoleTools;
 
 use Route;
 
 use Transmissor\Facades\Transmissor as TransmissorFacade;
+use Transmissor\Observers\TransmissorCallbacks;
 use Transmissor\Services\TransmissorService;
 
 class TransmissorProvider extends ServiceProvider
@@ -101,13 +104,16 @@ class TransmissorProvider extends ServiceProvider
 
         $this->setProviders();
 
+        // $kernel = $this->app->make(Kernel::class);
+        // $kernel->pushMiddleware(TransmissorCallbacks::class);
 
 
         // Register Migrations
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
         $this->app->singleton(
-            'transmissor', function () {
+            'transmissor',
+            function () {
                 return new Transmissor();
             }
         );
@@ -121,7 +127,8 @@ class TransmissorProvider extends ServiceProvider
          * Singleton Transmissor;
          */
         $this->app->singleton(
-            TransmissorService::class, function ($app) {
+            TransmissorService::class,
+            function ($app) {
                 Log::channel('sitec-transmissor')->info('Singleton Transmissor;');
                 return new TransmissorService(\Illuminate\Support\Facades\Config::get('sitec.transmissor'));
             }
@@ -170,7 +177,8 @@ class TransmissorProvider extends ServiceProvider
             [
             // Paths
             $this->getPublishesPath('config/sitec') => config_path('sitec'),
-            ], ['config',  'sitec', 'sitec-config']
+            ],
+            ['config',  'sitec', 'sitec-config']
         );
 
         // // Publish transmissor css and js to public directory
@@ -190,7 +198,8 @@ class TransmissorProvider extends ServiceProvider
         $this->publishes(
             [
             $viewsPath => base_path('resources/views/vendor/transmissor'),
-            ], ['views',  'sitec', 'sitec-views']
+            ],
+            ['views',  'sitec', 'sitec-views']
         );
     }
     
@@ -200,7 +209,8 @@ class TransmissorProvider extends ServiceProvider
         $this->publishes(
             [
             $this->getResourcesPath('lang') => resource_path('lang/vendor/transmissor')
-            ], ['lang',  'sitec', 'sitec-lang', 'translations']
+            ],
+            ['lang',  'sitec', 'sitec-lang', 'translations']
         );
 
         // Load translations
@@ -214,7 +224,8 @@ class TransmissorProvider extends ServiceProvider
     private function loadLogger()
     {
         Config::set(
-            'logging.channels.sitec-transmissor', [
+            'logging.channels.sitec-transmissor',
+            [
             'driver' => 'single',
             'path' => storage_path('logs/sitec-transmissor.log'),
             'level' => env('APP_LOG_LEVEL', 'debug'),

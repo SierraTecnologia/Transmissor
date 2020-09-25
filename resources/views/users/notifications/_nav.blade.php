@@ -1,7 +1,7 @@
-<div class="box card">
+<div class="box panel car">
     <div class="padding-md">
         <div class="list-group text-center">
-          <a href="{{ route('profile.messages.index') }}" class="list-group-item big {{ active_class(if_uri_pattern(['messages*'])) }}">
+          <a href="{{ route('profile.transmissor.messages.index') }}" class="list-group-item big {{ active_class(if_uri_pattern(['messages*'])) }}">
               <i class="text-md fa fa-envelope" aria-hidden="true"></i>
               &nbsp;Comunicação pessoal
                @if ($currentActor->message_count > 0)
