@@ -18,7 +18,7 @@ use App\Http\Requests\MessageRequest;
 
 class MessagesController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $threads = Thread::participateBy(Auth::id());
         if (Auth::user()->newThreadsCount() == 0) {

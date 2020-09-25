@@ -21,7 +21,7 @@ class ChatController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $conversations = Chat::conversation(Chat::conversations()->conversation)
           ->for(auth()->user())

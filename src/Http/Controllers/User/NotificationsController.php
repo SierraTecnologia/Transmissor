@@ -15,7 +15,7 @@ class NotificationsController extends Controller
         return redirect()->route('messages.index');
     }
 
-    public function index()
+    public function index(Request $request)
     {
         $notifications = Auth::user()->notifications();
         Auth::user()->notification_count = 0;

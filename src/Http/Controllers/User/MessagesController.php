@@ -19,7 +19,7 @@ use Transmissor\Http\Controllers\User\Controller;
 
 class MessagesController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $currentUserId = Auth::id();
         $threads = Thread::participateBy($currentUserId);
