@@ -9,7 +9,7 @@
 <div class="messages">
 
 <div class="col-md-3 main-col">
-    @include('notifications._nav')
+    @include('transmissor::users.notifications._nav')
 </div>
 
 <div class="col-md-9  left-col ">

@@ -2,11 +2,11 @@
 
 namespace Transmissor\Services;
 
+use Crypto;
+use Illuminate\Support\Facades\Schema;
 use Transmissor\Models\Notification;
 use Transmissor\Notifications\GeneralNotification;
 use Transmissor\Services\UserService;
-use Crypto;
-use Illuminate\Support\Facades\Schema;
 
 class NotificationService
 {
@@ -46,7 +46,7 @@ class NotificationService
      */
     public function userBasedPaginated($id)
     {
-        return $this->model->where('user_id', $id)->orderBy('created_at', 'desc')->paginate(env('PAGINATE', 25));
+        return $this->model->where('notificable_type', User::class)->where('notificable_id', $id)->orderBy('created_at', 'desc')->paginate(env('PAGINATE', 25));
     }
 
     /**
@@ -57,7 +57,7 @@ class NotificationService
      */
     public function userBased($id)
     {
-        return $this->model->where('user_id', $id)->where('deleted_at', null)->orderBy('created_at', 'desc')->get();
+        return $this->model->where('notificable_type', User::class)->where('notificable_id', $id)->where('deleted_at', null)->orderBy('created_at', 'desc')->get();
     }
 
     /**
@@ -97,7 +97,8 @@ class NotificationService
     public function notify($userId, $flag, $title, $details)
     {
         $input = [
-            'user_id' => $userId,
+            'notificable_type' => User::class,
+            'notificable_id' => $userId,
             'flag' => $flag,
             'title' => $title,
             'details' => $details,
@@ -250,5 +251,4 @@ class NotificationService
 
         return $users;
     }
-
 }

@@ -4,8 +4,8 @@ namespace Transmissor\Http\Controllers\User;
 
 use Auth;
 use Illuminate\Http\Request;
-use Transmissor\Services\NotificationService;
 use Transmissor\Http\Controllers\User\Controller;
+use Transmissor\Services\NotificationService;
 
 class NotificationController extends Controller
 {
@@ -22,7 +22,9 @@ class NotificationController extends Controller
     public function index(Request $request)
     {
         $notifications = $this->service->userBasedPaginated(Auth::id());
-        return view('notifications.index')->with('notifications', $notifications);
+        $currentActor = Auth::user();
+        return view('transmissor::users.notifications.index')
+            ->with('notifications', $notifications)->with('currentActor', $currentActor);
     }
 
     /**
@@ -33,7 +35,7 @@ class NotificationController extends Controller
     public function search(Request $request)
     {
         $notifications = $this->service->search($request->search, Auth::id());
-        return view('notifications.index')->with('notifications', $notifications);
+        return view('transmissor::users.notifications.index')->with('notifications', $notifications);
     }
 
     /**
@@ -47,7 +49,7 @@ class NotificationController extends Controller
         $notification = $this->service->findByUuid($uuid);
         $this->service->markAsRead($notification->id);
 
-        return view('notifications.show')->with('notification', $notification);
+        return view('transmissor::users.notifications.show')->with('notification', $notification);
     }
 
     /**
