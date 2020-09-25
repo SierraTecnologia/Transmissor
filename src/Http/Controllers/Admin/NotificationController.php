@@ -72,7 +72,7 @@ class NotificationController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
         $notification = $this->service->find($id);
         return view('transmissor::admin.notifications.edit')->with('notification', $notification);
@@ -102,7 +102,7 @@ class NotificationController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $result = $this->service->destroy($id);
 
