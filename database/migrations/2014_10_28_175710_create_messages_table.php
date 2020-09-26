@@ -14,19 +14,21 @@ class CreateMessagesTable extends Migration
      */
     public function up()
     {
-        Schema::create(Models::table('messages'), function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create(
+            Models::table('messages'), function (Blueprint $table) {
+                $table->increments('id');
 
-            // threads
-            $table->string('messageable_id');
-            $table->string('messageable_type');
+                // threads
+                $table->string('messageable_id');
+                $table->string('messageable_type');
 
-            // actor
-            $table->string('actorable_id');
-            $table->string('actorable_type');
-            $table->text('body');
-            $table->timestamps();
-        });
+                // actor
+                $table->string('actorable_id');
+                $table->string('actorable_type');
+                $table->text('body');
+                $table->timestamps();
+            }
+        );
     }
 
     /**

@@ -12,20 +12,22 @@ class CreateNotificationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('notifications', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create(
+            'notifications', function (Blueprint $table) {
+                $table->increments('id');
 
-            $table->string('flag');
-            $table->string('uuid');
-            $table->string('title');
-            $table->text('details')->nullable();
-            $table->boolean('is_read')->default(false);
+                $table->string('flag');
+                $table->string('uuid');
+                $table->string('title');
+                $table->text('details')->nullable();
+                $table->boolean('is_read')->default(false);
 
-            $table->string('notificable_id');
-            $table->string('notificable_type');
-            $table->softDeletes();
-            $table->timestamps();
-        });
+                $table->string('notificable_id');
+                $table->string('notificable_type');
+                $table->softDeletes();
+                $table->timestamps();
+            }
+        );
         // Schema::create('notifications', function (Blueprint $table) {
         //     $table->increments('id');
         //     $table->integer('from_user_id')->index();
