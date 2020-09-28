@@ -2,7 +2,7 @@
 
 return [
 
-    'user_model' => \Illuminate\Support\Facades\Config::get('sitec.core.models.user', \App\Models\User::class),
+    'user_model' => \Illuminate\Support\Facades\Config::get('application.directorys.models.users', \App\Models\User::class),
 
     'message_model' => Transmissor\Models\Messenger\Message::class,
 
