@@ -33,6 +33,6 @@ class ActivityServiceTest extends TestCase
         $this->be($user);
 
         $response = $this->service->log('this is a simple test');
-        $this->assertEquals(get_class($response), 'Transmissor\Models\Activity');
+        $this->assertEquals(get_class($response), 'Porteiro\Models\Activity');
     }
 }

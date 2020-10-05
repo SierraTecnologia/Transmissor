@@ -2,7 +2,7 @@
 
 namespace Transmissor\Services;
 
-use Transmissor\Models\Activity;
+use Porteiro\Models\Activity;
 
 class ActivityService
 {
