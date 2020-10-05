@@ -27,12 +27,12 @@
     ],
     "require": {
         "php": "^7.4",
-        "sierratecnologia/muleta": "dev-master",
-        "sierratecnologia/crypto": "dev-master",
-        "sierratecnologia/integrations": "dev-master",
-        "sierratecnologia/porteiro": "dev-master",
-        "sierratecnologia/locaravel": "dev-master",
-        "sierratecnologia/telefonica": "dev-master",
+        "sierratecnologia/muleta": "^0.4.0",
+        "sierratecnologia/crypto": "^0.4.0",
+        "sierratecnologia/integrations": "^0.4.0",
+        "sierratecnologia/porteiro": "^0.4.0",
+        "sierratecnologia/locaravel": "^0.4.0",
+        "sierratecnologia/telefonica": "^0.4.0",
         "ramsey/uuid": ">=3.8",
         "guzzlehttp/guzzle": "^6.0 || ^7.0",
         "overtrue/laravel-follow": "^1.0",
@@ -66,7 +66,6 @@
         "post-update-cmd": [],
         "post-create-project-cmd": []
     },
-    "repositories": [{"type": "path","url":"../**","options":{"symlink": true}}],
     "minimum-stability": "dev",
     "prefer-stable": true,
     "extra": {
