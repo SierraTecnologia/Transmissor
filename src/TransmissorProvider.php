@@ -50,7 +50,7 @@ class TransmissorProvider extends ServiceProvider
         'Admin' => [
             [
                 'text'        => 'Notifications',
-                'route'       => 'admin.notifications.index',
+                'route'       => 'admin.transmissor.notifications.index',
                 'icon'        => 'puzzle-piece',
                 'section'     => 'painel',
                 'level'       => 3,
