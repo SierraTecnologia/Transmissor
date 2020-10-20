@@ -227,7 +227,7 @@ class TransmissorProvider extends ServiceProvider
             'logging.channels.sitec-transmissor',
             [
             'driver' => 'single',
-            'path' => storage_path('logs'.DIRECTORY_SEPARACTOR.'sitec-transmissor.log'),
+            'path' => storage_path('logs'.DIRECTORY_SEPARATOR.'sitec-transmissor.log'),
             'level' => env('APP_LOG_LEVEL', 'debug'),
             ]
         );
