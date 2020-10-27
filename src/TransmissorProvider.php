@@ -91,7 +91,7 @@ class TransmissorProvider extends ServiceProvider
         /**
          * Transmissor; Routes
          */
-        $this->loadRoutesForRiCa(__DIR__.'/../routes');
+        $this->loadRoutesForRiCa(__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'routes');
     }
 
     /**
@@ -99,7 +99,7 @@ class TransmissorProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom($this->getPublishesPath('config/sitec/transmissor.php'), 'sitec.transmissor');
+        $this->mergeConfigFrom($this->getPublishesPath('config'.DIRECTORY_SEPARATOR.'sitec'.DIRECTORY_SEPARATOR.'transmissor.php'), 'sitec.transmissor');
         
 
         $this->setProviders();
@@ -109,7 +109,7 @@ class TransmissorProvider extends ServiceProvider
 
 
         // Register Migrations
-        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+        $this->loadMigrationsFrom(__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'database'.DIRECTORY_SEPARATOR.'migrations');
 
         $this->app->singleton(
             'transmissor',
@@ -176,7 +176,7 @@ class TransmissorProvider extends ServiceProvider
         $this->publishes(
             [
             // Paths
-            $this->getPublishesPath('config/sitec') => config_path('sitec'),
+            $this->getPublishesPath('config'.DIRECTORY_SEPARATOR.'sitec') => config_path('sitec'),
             ],
             ['config',  'sitec', 'sitec-config']
         );
@@ -197,7 +197,7 @@ class TransmissorProvider extends ServiceProvider
         $this->loadViewsFrom($viewsPath, 'transmissor');
         $this->publishes(
             [
-            $viewsPath => base_path('resources/views/vendor/transmissor'),
+            $viewsPath => base_path('resources'.DIRECTORY_SEPARATOR.'views'.DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'transmissor'),
             ],
             ['views',  'sitec', 'sitec-views']
         );
@@ -208,7 +208,7 @@ class TransmissorProvider extends ServiceProvider
         // Publish lanaguage files
         $this->publishes(
             [
-            $this->getResourcesPath('lang') => resource_path('lang/vendor/transmissor')
+            $this->getResourcesPath('lang') => resource_path('lang'.DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'transmissor')
             ],
             ['lang',  'sitec', 'sitec-lang', 'translations']
         );
@@ -227,7 +227,7 @@ class TransmissorProvider extends ServiceProvider
             'logging.channels.sitec-transmissor',
             [
             'driver' => 'single',
-            'path' => storage_path('logs/sitec-transmissor.log'),
+            'path' => storage_path('logs'.DIRECTORY_SEPARATOR.'sitec-transmissor.log'),
             'level' => env('APP_LOG_LEVEL', 'debug'),
             ]
         );
