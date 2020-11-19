@@ -78,6 +78,10 @@ Minha dinâmica | @parent
 
 </div>
 
-@include('layouts.partials.sidebar')
+<?php /**
+ * @todo Apaguei pq nao existe essa blade
+ * @include('layouts.partials.sidebar')
+ */
+?>
 
 @stop
