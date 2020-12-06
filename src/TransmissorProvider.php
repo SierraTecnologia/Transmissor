@@ -47,15 +47,15 @@ class TransmissorProvider extends ServiceProvider
      * Rotas do Menu
      */
     public static $menuItens = [
-        'Admin' => [
+        // 'Admin' => [
             [
                 'text'        => 'Notifications',
                 'route'       => 'admin.transmissor.notifications.index',
                 'icon'        => 'puzzle-piece',
-                'section'     => 'painel',
+                'section'     => 'admin',
                 'level'       => 3,
             ],
-        ],
+        // ],
     ];
 
     /**
