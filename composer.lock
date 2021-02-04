@@ -7199,7 +7199,7 @@
                 "fzaninotto/faker": ">=1.8",
                 "guzzlehttp/guzzle": "^6.3|^7.0",
                 "nesbot/carbon": ">=2.0|1.*",
-                "php": "^7.4"
+                "php": "^7.2|^8.0"
             },
             "require-dev": {
                 "ext-intl": "*",
@@ -7655,7 +7655,7 @@
                 "illuminate/support": "^7.0 || ^8.0",
                 "illuminate/translation": "^7.0 || ^8.0",
                 "illuminate/view": "^7.0 || ^8.0",
-                "php": "^7.4"
+                "php": "^7.2|^8.0"
             },
             "replace": {
                 "anahkiasen/former": "*",
@@ -7804,7 +7804,7 @@
                 "league/pipeline": "*",
                 "league/plates": "^3.1|^4.0",
                 "m4tthumphrey/php-gitlab-api": "*",
-                "php": "^7.4",
+                "php": "^7.2|^8.0",
                 "raiym/instagram-php-scraper": ">=0.9.10",
                 "ricasolucoes/atlassian": "dev-master",
                 "sabre/xml": "*",
@@ -7875,7 +7875,7 @@
                 "illuminate/support": "^7.0 || ^8.0",
                 "jmikola/geojson": "^1.0",
                 "jordanbrauer/unit-converter": "^0.8.4",
-                "php": "^7.4",
+                "php": "^7.2|^8.0",
                 "ricardosierra/database": "^0.21",
                 "ricardosierra/translation": "dev-master",
                 "ricardosierra/validate": "dev-master",
@@ -7962,7 +7962,7 @@
             },
             "require": {
                 "laravel/helpers": "^1.1",
-                "php": "^7.4",
+                "php": "^7.2|^8.0",
                 "ricardosierra/changelog": "~1.4",
                 "sierratecnologia/crypto": "dev-master"
             },
@@ -8057,7 +8057,7 @@
                 "laravelcollective/html": "^6.0|^7.0",
                 "league/csv": "^9.0",
                 "maatwebsite/excel": ">=3.1",
-                "php": "^7.4",
+                "php": "^7.2|^8.0",
                 "ramsey/uuid": "^4.0",
                 "rap2hpoutre/fast-excel": "^1.7|^2.0",
                 "ricardosierra/changelog": "~1.4",
@@ -8250,7 +8250,7 @@
             },
             "require": {
                 "laravel/helpers": "^1.1",
-                "php": "^7.4",
+                "php": "^7.2|^8.0",
                 "propaganistas/laravel-phone": "^4.2.5",
                 "sierratecnologia/crypto": "dev-master"
             },
@@ -14704,7 +14704,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.4"
+        "php": "^7.2|^8.0"
     },
     "platform-dev": [],
     "plugin-api-version": "1.1.0"
