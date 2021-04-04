@@ -51,9 +51,10 @@ class TransmissorProvider extends ServiceProvider
             [
                 'text'        => 'Notifications',
                 'route'       => 'admin.transmissor.notifications.index',
-                'icon'        => 'puzzle-piece',
+                'icon'        => 'fas fa-fw fa-envelope',
                 'section'     => 'admin',
-                'level'       => 3,
+                'order' => 2001,
+                'level'       => 2,
             ],
         // ],
     ];
