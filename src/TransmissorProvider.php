@@ -53,7 +53,7 @@ class TransmissorProvider extends ServiceProvider
                 'route'       => 'admin.transmissor.notifications.index',
                 'icon'        => 'fas fa-fw fa-envelope',
                 'section'     => 'admin',
-                'order' => 2001,
+                'order' => 2101,
                 'level'       => 2,
             ],
         // ],
