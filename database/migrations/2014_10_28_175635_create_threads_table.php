@@ -14,6 +14,14 @@ class CreateThreadsTable extends Migration
      */
     public function up()
     {
+        if (!\Muleta\Modules\Features\Resources\FeatureHelper::hasActiveFeature(
+            [
+                'transmissor',
+            ]
+        )){
+            \Log::debug('Migration Ignorada por causa de Feature transmissor');
+            return ;
+        }
         Schema::create(Models::table('threads'), function (Blueprint $table) {
             $table->increments('id');
             $table->string('subject');
@@ -28,6 +36,14 @@ class CreateThreadsTable extends Migration
      */
     public function down()
     {
+        if (!\Muleta\Modules\Features\Resources\FeatureHelper::hasActiveFeature(
+            [
+                'transmissor',
+            ]
+        )){
+            \Log::debug('Migration Ignorada por causa de Feature transmissor');
+            return ;
+        }
         Schema::dropIfExists(Models::table('threads'));
     }
 }

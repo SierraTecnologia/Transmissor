@@ -50,9 +50,8 @@ If you discover a security vulnerability within this project, please send an e-m
 
 SierraTecnologia is a software solutions startup, specialized in integrated enterprise solutions for SMEs established in Rio de Janeiro, Brazil since June 2008. We believe that our drive The Value, The Reach, and The Impact is what differentiates us and unleash the endless possibilities of our philosophy through the power of software. We like to call it Innovation At The Speed Of Life. That’s how we do our share of advancing humanity.
 
-
 ## License
 
-This software is released under [The MIT License (MIT)](LICENSE).
+This is opensource package [The MIT License (MIT)](LICENSE).
 
-(c) 2008-2020 SierraTecnologia, Some rights reserved.
+(c) 2008-2020 SierraTecnologia, Permitimos a cópia sem restrições.

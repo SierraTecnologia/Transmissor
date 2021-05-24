@@ -14,6 +14,14 @@ class AddSoftDeletesToParticipantsTable extends Migration
      */
     public function up()
     {
+        if (!\Muleta\Modules\Features\Resources\FeatureHelper::hasActiveFeature(
+            [
+                'transmissor',
+            ]
+        )){
+            \Log::debug('Migration Ignorada por causa de Feature transmissor');
+            return ;
+        }
         Schema::table(
             Models::table('participants'), function (Blueprint $table) {
                 $table->softDeletes();
@@ -28,6 +36,14 @@ class AddSoftDeletesToParticipantsTable extends Migration
      */
     public function down()
     {
+        if (!\Muleta\Modules\Features\Resources\FeatureHelper::hasActiveFeature(
+            [
+                'transmissor',
+            ]
+        )){
+            \Log::debug('Migration Ignorada por causa de Feature transmissor');
+            return ;
+        }
         Schema::table(
             Models::table('participants'), function (Blueprint $table) {
                 $table->dropSoftDeletes();

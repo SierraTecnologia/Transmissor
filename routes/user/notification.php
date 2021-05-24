@@ -1,5 +1,11 @@
 <?php
 
+if (\Muleta\Modules\Features\Resources\FeatureHelper::hasActiveFeature(
+    [
+        'transmissor',
+    ]
+)){
+
     /*
     |--------------------------------------------------------------------------
     | User Routes
@@ -19,3 +25,4 @@
         // Route::get('/', 'NotificationsController@index')->name('notifications.index');
         Route::get('/count', 'NotificationsController@count')->name('notifications.count');
     });
+}

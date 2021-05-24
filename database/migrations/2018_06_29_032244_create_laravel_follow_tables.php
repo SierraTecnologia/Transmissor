@@ -19,6 +19,14 @@ class CreateLaravelFollowTables extends Migration
      */
     public function up()
     {
+        if (!\Muleta\Modules\Features\Resources\FeatureHelper::hasActiveFeature(
+            [
+                'transmissor',
+            ]
+        )){
+            \Log::debug('Migration Ignorada por causa de Feature transmissor');
+            return ;
+        }
         Schema::create(
             \Illuminate\Support\Facades\Config::get('follow.followable_table', 'followables'), function (Blueprint $table) {
                 $userForeignKey = \Illuminate\Support\Facades\Config::get('follow.users_table_foreign_key', 'person_code');
@@ -52,6 +60,14 @@ class CreateLaravelFollowTables extends Migration
      */
     public function down()
     {
+        if (!\Muleta\Modules\Features\Resources\FeatureHelper::hasActiveFeature(
+            [
+                'transmissor',
+            ]
+        )){
+            \Log::debug('Migration Ignorada por causa de Feature transmissor');
+            return ;
+        }
         Schema::table(
             \Illuminate\Support\Facades\Config::get('follow.followable_table', 'followables'), function ($table) {
                 $table->dropForeign(\Illuminate\Support\Facades\Config::get('follow.followable_table', 'followables').'_user_id_foreign');
