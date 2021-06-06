@@ -6,3 +6,6 @@ build.json
 /node_modules
 .env
 *.sqlite
+.php_cs.cache
+.phpunit.result.cache
+files

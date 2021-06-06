@@ -47,15 +47,27 @@ class TransmissorProvider extends ServiceProvider
      * Rotas do Menu
      */
     public static $menuItens = [
-        'Admin' => [
+        [
+            'text'        => 'Logs',
+            'route'       => 'rica.tracking.larametrics::metrics.index',
+            'icon'        => 'dashboard',
+            'icon_color'  => 'blue',
+            'label_color' => 'success',
+            'level'       => 2,
+            'order' => 550,
+            'section' => "painel",
+            // 'access' => \Porteiro\Models\Role::$ADMIN
+        ],
+        // 'Admin' => [
             [
                 'text'        => 'Notifications',
                 'route'       => 'admin.transmissor.notifications.index',
-                'icon'        => 'puzzle-piece',
-                'section'     => 'painel',
-                'level'       => 3,
+                'icon'        => 'fas fa-fw fa-envelope',
+                'section'     => 'admin',
+                'order' => 2101,
+                'level'       => 2,
             ],
-        ],
+        // ],
     ];
 
     /**
@@ -199,7 +211,7 @@ class TransmissorProvider extends ServiceProvider
             [
             $viewsPath => base_path('resources'.DIRECTORY_SEPARATOR.'views'.DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'transmissor'),
             ],
-            ['views',  'sitec', 'sitec-views']
+            ['views',  'sitec', 'sitec-views', 'transmissor-views']
         );
     }
     
@@ -210,7 +222,7 @@ class TransmissorProvider extends ServiceProvider
             [
             $this->getResourcesPath('lang') => resource_path('lang'.DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'transmissor')
             ],
-            ['lang',  'sitec', 'sitec-lang', 'translations']
+            ['lang',  'sitec', 'sitec-lang', 'translations', 'transmissor-lang']
         );
 
         // Load translations
@@ -233,3 +245,110 @@ class TransmissorProvider extends ServiceProvider
         );
     }
 }
+// /**
+//  * <?php
+// Antigo Provider Messenger
+
+// namespace Cmgmyr\Messenger;
+
+// use Transmissor\Models\Messenger\Message;
+// use Transmissor\Models\Messenger\Models;
+// use Transmissor\Models\Messenger\Participant;
+// use Transmissor\Models\Messenger\Thread;
+// use Illuminate\Support\ServiceProvider;
+
+// class MessengerServiceProvider extends ServiceProvider
+// {
+//     /**
+//      * Bootstrap the application services.
+//      *
+//      * @return void
+//      */
+//     public function boot()
+//     {
+//         $this->offerPublishing();
+//         $this->setMessengerModels();
+//         $this->setUserModel();
+//     }
+
+//     /**
+//      * Register the application services.
+//      *
+//      * @return void
+//      */
+//     public function register()
+//     {
+//         $this->configure();
+//     }
+
+//     /**
+//      * Setup the configuration for Messenger.
+//      *
+//      * @return void
+//      */
+//     protected function configure()
+//     {
+//         $this->mergeConfigFrom(
+//             base_path('vendor/cmgmyr/messenger/config/config.php'),
+//             'messenger'
+//         );
+//     }
+
+//     /**
+//      * Setup the resource publishing groups for Messenger.
+//      *
+//      * @return void
+//      */
+//     protected function offerPublishing()
+//     {
+//         if ($this->app->runningInConsole()) {
+//             $this->publishes([
+//                 base_path('vendor/cmgmyr/messenger/config/config.php') => config_path('messenger.php'),
+//             ], 'config');
+
+//             $this->publishes([
+//                 base_path('vendor/cmgmyr/messenger/migrations') => base_path('database/migrations'),
+//             ], 'migrations');
+//         }
+//     }
+
+//     /**
+//      * Define Messenger's models in registry.
+//      *
+//      * @return void
+//      */
+//     protected function setMessengerModels()
+//     {
+//         $config = $this->app->make('config');
+
+//         Models::setMessageModel($config->get('messenger.message_model', Message::class));
+//         Models::setThreadModel($config->get('messenger.thread_model', Thread::class));
+//         Models::setParticipantModel($config->get('messenger.participant_model', Participant::class));
+
+//         Models::setTables([
+//             'messages' => $config->get('messenger.messages_table', Models::message()->getTable()),
+//             'participants' => $config->get('messenger.participants_table', Models::participant()->getTable()),
+//             'threads' => $config->get('messenger.threads_table', Models::thread()->getTable()),
+//         ]);
+//     }
+
+//     /**
+//      * Define User model in Messenger's model registry.
+//      *
+//      * @return void
+//      */
+//     protected function setUserModel()
+//     {
+//         $config = $this->app->make('config');
+
+//         $model = $config->get('messenger.user_model', function () use ($config) {
+//             return $config->get('auth.providers.users.model', $config->get('auth.model'));
+//         });
+
+//         Models::setUserModel($model);
+
+//         Models::setTables([
+//             'users' => (new $model)->getTable(),
+//         ]);
+//     }
+// }

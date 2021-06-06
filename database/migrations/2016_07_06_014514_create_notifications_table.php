@@ -12,6 +12,14 @@ class CreateNotificationsTable extends Migration
      */
     public function up()
     {
+        if (!\Muleta\Modules\Features\Resources\FeatureHelper::hasActiveFeature(
+            [
+                'transmissor',
+            ]
+        )){
+            \Log::debug('Migration Ignorada por causa de Feature transmissor');
+            return ;
+        }
         Schema::create('notifications', function (Blueprint $table) {
             $table->increments('id');
 
@@ -45,6 +53,14 @@ class CreateNotificationsTable extends Migration
      */
     public function down()
     {
+        if (!\Muleta\Modules\Features\Resources\FeatureHelper::hasActiveFeature(
+            [
+                'transmissor',
+            ]
+        )){
+            \Log::debug('Migration Ignorada por causa de Feature transmissor');
+            return ;
+        }
         Schema::dropIfExists('notifications');
     }
 }

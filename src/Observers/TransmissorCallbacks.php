@@ -34,7 +34,7 @@ class TransmissorCallbacks
         // // list($model) = $payload;
         // dd($payload);
         // // // Payload
-        // // ^ Cmgmyr\Messenger\Models\Message^ {#4332
+        // // ^ Transmissor\Models\Messenger\Message^ {#4332
         // //     #table: "messages"
         // //     #touches: array:1 [
         // //       0 => "thread"

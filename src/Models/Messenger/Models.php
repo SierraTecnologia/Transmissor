@@ -2,6 +2,12 @@
 
 namespace Transmissor\Models\Messenger;
 
+use Illuminate\Database\Eloquent\Builder;
+use Transmissor\Models\Messenger\Participant;
+use Transmissor\Models\Messenger\Message;
+use Transmissor\Models\Messenger\Models;
+use Transmissor\Models\Messenger\Thread;
+
 class Models
 {
     /**
