@@ -10,17 +10,17 @@ class TopicPolicy
 {
     use HandlesAuthorization;
 
-    public function show_draft(User $user, Topic $topic)
+    public function show_draft(User $user, Topic $topic): bool
     {
         return $user->may('manage_topics') || $topic->user_id == $user->id;
     }
 
-    public function update(User $user, Topic $topic)
+    public function update(User $user, Topic $topic): bool
     {
         return $user->may('manage_topics') || $topic->user_id == $user->id;
     }
 
-    public function delete(User $user, Topic $topic)
+    public function delete(User $user, Topic $topic): bool
     {
         return $user->may('manage_topics') || $topic->user_id == $user->id;
     }
@@ -45,7 +45,7 @@ class TopicPolicy
         return $user->may('manage_topics');
     }
 
-    public function append(User $user, Topic $topic)
+    public function append(User $user, Topic $topic): bool
     {
         return $user->may('manage_topics') || $topic->user_id == $user->id;
     }

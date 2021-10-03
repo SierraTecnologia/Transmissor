@@ -15,15 +15,19 @@ class Thread extends MessengerThread
 
     /**
      * Get all participants.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
      */
-    public function participants()
+    public function participants(): \Illuminate\Database\Eloquent\Relations\MorphMany
     {
         return $this->morphMany(Participant::class, 'messageable');
     }
     /**
      * Get all messages.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
      */
-    public function messages()
+    public function messages(): \Illuminate\Database\Eloquent\Relations\MorphMany
     {
         return $this->morphMany(Message::class, 'messageable');
     }

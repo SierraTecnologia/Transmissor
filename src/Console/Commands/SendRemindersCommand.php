@@ -27,7 +27,7 @@ class SendRemindersCommand extends Command
         // $this->botman = resolve('botman');
     }
 
-    public function handle()
+    public function handle(): void
     {
         // $reminders = $this->getReminders();
 
@@ -58,12 +58,12 @@ class SendRemindersCommand extends Command
         // });
     }
 
-    private function getGreetings($name)
+    private function getGreetings($name): string
     {
         return "🕐 {$this->getSalute()} {$name}, aquí tens la informació del teu recordatori 👇";
     }
 
-    private function getSalute()
+    private function getSalute(): string
     {
         $hour = date('H');
 
@@ -82,13 +82,13 @@ class SendRemindersCommand extends Command
         return 'Bona nit';
     }
 
-    private function sayTo($message, $userId, $params = [])
+    private function sayTo($message, $userId, $params = []): void
     {
         // $this->botman->say($message, $userId, TelegramDriver::class, $params);
 
     }
 
-    private function getReminders()
+    private function getReminders(): void
     {
         // return Reminder::where('active', true)
         //     ->where(date('l'), true)

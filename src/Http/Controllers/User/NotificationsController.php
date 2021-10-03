@@ -15,6 +15,9 @@ class NotificationsController extends Controller
         return redirect()->route('profile.transmissor.messages.index');
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function index(Request $request)
     {
         $notifications = Auth::user()->notifications();

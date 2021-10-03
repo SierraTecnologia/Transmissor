@@ -15,6 +15,9 @@ use Auth;
 
 class ActivityController extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function index(Request $request)
     {
         switch ($request->view) {

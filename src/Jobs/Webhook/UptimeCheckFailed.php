@@ -34,7 +34,7 @@ class UptimeCheckFailed implements ShouldQueue
         $this->botman = resolve('botman');
     }
 
-    public function handle()
+    public function handle(): void
     {
         $this->botman->say(
             trans('Transmissor.webhook.uptime_check_failed', ['url' => $this->payload->site->url]),

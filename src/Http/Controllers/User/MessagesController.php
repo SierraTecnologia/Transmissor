@@ -19,6 +19,9 @@ use Transmissor\Models\Messenger\Thread;
 
 class MessagesController extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function index(Request $request)
     {
         $currentUserId = Auth::id();
@@ -48,6 +51,9 @@ class MessagesController extends Controller
         );
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function show($id)
     {
         $thread = Thread::findOrFail($id);

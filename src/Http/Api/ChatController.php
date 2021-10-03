@@ -19,7 +19,7 @@ class ChatController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index(Request $request)
     {
@@ -31,13 +31,13 @@ class ChatController extends Controller
         return view('home', compact('conversations'));
     }
 
-    public function history($toId)
+    public function history($toId): void
     {
         $user = Auth::getToken();
         $conversation = Chat::conversations()->between($user, User::find($toId));
     }
 
-    public function send($toId)
+    public function send($toId): void
     {
         $user = Auth::getToken();
         $message = Chat::message('Hello')

@@ -49,8 +49,10 @@ class Comment extends Base
     
     /**
      * Get the owning commentable model.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
      */
-    public function commentable()
+    public function commentable(): \Illuminate\Database\Eloquent\Relations\MorphTo
     {
         return $this->morphTo();
     }
@@ -166,11 +168,14 @@ class Comment extends Base
         // }
     }
     
-    public function references()
+    public function references(): \Illuminate\Database\Eloquent\Relations\MorphToMany
     {
         return $this->morphToMany(Reference::class, 'referenceable');
     }
     
+    /**
+     * @return false|null
+     */
     public static function registerComents($data, $id, $type, $reference)
     {
         if ($data->total<=0) {
