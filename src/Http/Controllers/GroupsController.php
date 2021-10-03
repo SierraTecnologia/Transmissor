@@ -7,16 +7,19 @@ use BotMan\BotMan\BotMan;
 
 class GroupsController extends Controller
 {
-    public function register(BotMan $bot)
+    public function register(BotMan $bot): void
     {
         $bot->startConversation(new RegisterGroupConversation());
     }
 
-    public function registerNewGroup($payload, BotMan $bot)
+    public function registerNewGroup($payload, BotMan $bot): void
     {
         $this->register($bot);
     }
 
+    /**
+     * @return void
+     */
     public function registerNewChatMember($payload, BotMan $bot)
     {
         foreach ($payload as $newUser) {

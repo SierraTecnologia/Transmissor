@@ -33,16 +33,20 @@ class Participant extends MessengerParticipant
     
     /**
      * Local aonde está a mensagem
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
      */
-    public function messageable()
+    public function messageable(): \Illuminate\Database\Eloquent\Relations\MorphTo
     {
         return $this->morphTo();
     }
     
     /**
      * Quem enviou a mensagem
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
      */
-    public function actorable()
+    public function actorable(): \Illuminate\Database\Eloquent\Relations\MorphTo
     {
         return $this->morphTo();
     }

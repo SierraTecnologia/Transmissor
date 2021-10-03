@@ -18,6 +18,9 @@ use Illuminate\Support\Facades\Session;
 
 class MessagesController extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function index(Request $request)
     {
         $threads = Thread::participateBy(Auth::id());
@@ -28,6 +31,9 @@ class MessagesController extends Controller
         return view('transmissor::users.messages.index', compact('threads', 'currentUserId'));
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function show($id)
     {
         $thread = Thread::findOrFail($id);

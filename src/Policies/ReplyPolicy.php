@@ -10,7 +10,7 @@ class ReplyPolicy
 {
     use HandlesAuthorization;
 
-    public function delete(User $user, Reply $reply)
+    public function delete(User $user, Reply $reply): bool
     {
         return $user->may('manage_topics') || $reply->user_id == $user->id;
     }

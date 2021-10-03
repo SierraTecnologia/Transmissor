@@ -58,16 +58,20 @@ class Message extends BaseMessage
     
     /**
      * Get the parent messageable model
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
      */
-    public function messageable()
+    public function messageable(): \Illuminate\Database\Eloquent\Relations\MorphTo
     {
         return $this->morphTo();
     }
     
     /**
      * Get the parent actorable model
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
      */
-    public function actorable()
+    public function actorable(): \Illuminate\Database\Eloquent\Relations\MorphTo
     {
         return $this->morphTo();
     }

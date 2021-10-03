@@ -23,7 +23,7 @@ class EloquentBuilder extends Builder
     {
         $builder = $this->applyScopes();
 
-        $closure = function () use ($builder, $columns) {
+        $closure = function () use ($builder, $columns): \Illuminate\Database\Eloquent\Collection {
             // If we actually found models we will also eager load any relationships that
             // have been specified as needing to be eager loaded, which will solve the
             // n+1 query issue for the developers to avoid running a lot of queries.
@@ -60,7 +60,10 @@ class EloquentBuilder extends Builder
     {
         $builder = $this->toBase();
 
-        $closure = function () use ($builder, $column, $key) {
+        $closure = /**
+         * @return \Illuminate\Support\Collection
+         */
+        function () use ($builder, $column, $key): self {
             $results = $builder->pluck($column, $key);
 
             // If the model has a mutator for the requested column, we will spin through

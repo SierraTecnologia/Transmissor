@@ -20,20 +20,29 @@ class TransmissorFactory
         $this->amount = $amount;
     }
 
-    public function to(User $receiver)
+    /**
+     * @return static
+     */
+    public function to(User $receiver): self
     {
         $this->receiver = $receiver;
 
         return $this;
     }
 
-    public function in(Group $group)
+    /**
+     * @return static
+     */
+    public function in(Group $group): self
     {
         $this->group = $group;
 
         return $this;
     }
 
+    /**
+     * @return void
+     */
     public function save()
     {
 

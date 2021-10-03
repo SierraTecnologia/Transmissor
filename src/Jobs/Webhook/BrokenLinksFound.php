@@ -34,7 +34,7 @@ class BrokenLinksFound implements ShouldQueue
         $this->botman = resolve('botman');
     }
 
-    public function handle()
+    public function handle(): void
     {
         $this->botman->say(
             trans('Transmissor.webhook.broken_links_found', ['url' => $this->payload->site->url]),
@@ -48,7 +48,7 @@ class BrokenLinksFound implements ShouldQueue
         }
     }
 
-    private function reportBrokenLink($link)
+    private function reportBrokenLink($link): void
     {
         $this->botman->say(
             trans(

@@ -35,8 +35,10 @@ class Models
      * Set the model to be used for threads.
      *
      * @param string $model
+     *
+     * @return void
      */
-    public static function setMessageModel($model)
+    public static function setMessageModel($model): void
     {
         static::$models[Message::class] = $model;
     }
@@ -45,8 +47,10 @@ class Models
      * Set the model to be used for participants.
      *
      * @param string $model
+     *
+     * @return void
      */
-    public static function setParticipantModel($model)
+    public static function setParticipantModel($model): void
     {
         static::$models[Participant::class] = $model;
     }
@@ -55,8 +59,10 @@ class Models
      * Set the model to be used for threads.
      *
      * @param string $model
+     *
+     * @return void
      */
-    public static function setThreadModel($model)
+    public static function setThreadModel($model): void
     {
         static::$models[Thread::class] = $model;
     }
@@ -65,8 +71,10 @@ class Models
      * Set the model to be used for users.
      *
      * @param string $model
+     *
+     * @return void
      */
-    public static function setUserModel($model)
+    public static function setUserModel($model): void
     {
         static::$models[self::$userModelLookupKey] = $model;
     }
@@ -75,8 +83,10 @@ class Models
      * Set custom table names.
      *
      * @param array $map
+     *
+     * @return void
      */
-    public static function setTables(array $map)
+    public static function setTables(array $map): void
     {
         static::$tables = array_merge(static::$tables, $map);
     }

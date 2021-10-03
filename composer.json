@@ -28,6 +28,7 @@
     ],
     "require": {
         "php": "^7.2|^8.0",
+<<<<<<< HEAD
         "illuminate/config": "^5.5|^6.0|^7.0|^8.0",
         "illuminate/support": "^5.5|^6.0|^7.0|^8.0",
         "illuminate/database": "^5.5|^6.0|^7.0|^8.0",
@@ -38,21 +39,33 @@
         "sierratecnologia/population": "^0.4.0",
         "sierratecnologia/locaravel": "^0.4.0",
         "sierratecnologia/telefonica": "^0.4.0",
+=======
+        "sierratecnologia/muleta": "^0.4",
+        "sierratecnologia/crypto": "^0.4",
+        "sierratecnologia/integrations": "^0.4",
+        "sierratecnologia/porteiro": "^0.4",
+        "sierratecnologia/population": "^0.4",
+        "sierratecnologia/telefonica": "^0.4",
+>>>>>>> master
         "ramsey/uuid": ">=3.8",
         "guzzlehttp/guzzle": "^6.0 || ^7.0 || ^8.0",
         "cmgmyr/messenger": "dev-master"
     },
     "require-dev": {
+        "adamwathan/faktory": "0.3.*",
         "barryvdh/laravel-debugbar": "*",
         "barryvdh/laravel-ide-helper": ">=2.7",
         "codedungeon/phpunit-result-printer": ">=0.27.0",
-        "phpunit/phpunit": "^8.0|^9.0|^10.0",
-        "adamwathan/faktory": "0.3.*",
         "friendsofphp/php-cs-fixer": "^2.18",
-        "orchestra/testbench": "^3.0|^4.0|^5.0|^6.0"
+        "orchestra/testbench": "^3.0|^4.0|^5.0|^6.0",
+        "phpunit/phpunit": "^8.0|^9.0|^10.0",
+        "psalm/plugin-laravel": "^1.5"
     },
     "suggest": {
-        "fzaninotto/faker": "*"
+        "illuminate/config": "^5.5|^6.0|^7.0|^8.0",
+        "illuminate/support": "^5.5|^6.0|^7.0|^8.0",
+        "illuminate/database": "^5.5|^6.0|^7.0|^8.0",
+        "fakerphp/faker": "^1.5"
     },
     "autoload": {
         "psr-4": {
