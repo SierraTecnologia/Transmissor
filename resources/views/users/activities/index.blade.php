@@ -80,7 +80,7 @@ Minha dinâmica | @parent
 
 <?php /**
  * @todo Apaguei pq nao existe essa blade
- * @include('layouts.partials.sidebar')
+ * @include('pedreiro::layouts.partials.sidebar')
  */
 ?>
 
