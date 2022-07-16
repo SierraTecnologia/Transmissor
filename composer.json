@@ -28,7 +28,6 @@
     ],
     "require": {
         "php": "^7.2|^8.0",
-<<<<<<< HEAD
         "illuminate/config": "^5.5|^6.0|^7.0|^8.0",
         "illuminate/support": "^5.5|^6.0|^7.0|^8.0",
         "illuminate/database": "^5.5|^6.0|^7.0|^8.0",
@@ -39,14 +38,6 @@
         "sierratecnologia/population": "^0.4.0",
         "sierratecnologia/locaravel": "^0.4.0",
         "sierratecnologia/telefonica": "^0.4.0",
-=======
-        "sierratecnologia/muleta": "^0.4",
-        "sierratecnologia/crypto": "^0.4",
-        "sierratecnologia/integrations": "^0.4",
-        "sierratecnologia/porteiro": "^0.4",
-        "sierratecnologia/population": "^0.4",
-        "sierratecnologia/telefonica": "^0.4",
->>>>>>> master
         "ramsey/uuid": ">=3.8",
         "guzzlehttp/guzzle": "^6.0 || ^7.0 || ^8.0",
         "cmgmyr/messenger": "dev-master"
