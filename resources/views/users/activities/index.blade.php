@@ -14,9 +14,9 @@ Minha dinâmica | @parent
 
 <div class="col-md-9 topics-index feed-list main-col">
 
-    <div class="panel panel-default">
+    <div class="card card-default">
 
-        <div class="panel-heading">
+        <div class="card-header">
             <ul class="nav nav-tabs">
                 <li role="presentation" class="{{ active_class(if_query('view', null)) }}"><a href="{{ route('home') }}"><i class="fa fa-eye" aria-hidden="true"></i> Tópicos Sugeridos</a></li>
                 <li role="presentation" class="{{ active_class(if_query('view', 'all')) }}"><a href="{{ route('home', ['view' => 'all']) }}"><i class="fa fa-rss" aria-hidden="true"></i> Todos os Tópicos</a></li>
@@ -63,7 +63,7 @@ Minha dinâmica | @parent
             </div>
 
         @else
-            <div class="panel-body">
+            <div class="box-body panel-body card-body">
                 <div class="empty-block">
                     @if (if_query('view', null))
                         (=￣ω￣=)··· Siga um usuário ou assine um blog para ter conteúdo aqui.

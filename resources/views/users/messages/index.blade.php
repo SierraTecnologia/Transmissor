@@ -14,9 +14,9 @@ Minhas Mensagens | @parent
 
     <div class="col-md-9  left-col ">
 
-        <div class="panel panel-default padding-sm">
+        <div class="card card-default padding-sm">
 
-            <div class="panel-heading">
+            <div class="card-header">
                 <h1>Minha mensagem</h1>
             </div>
 
@@ -89,7 +89,7 @@ Minhas Mensagens | @parent
                 </div>
 
             @else
-                <div class="panel-body">
+                <div class="box-body panel-body card-body">
                     <div class="empty-block">A lista de mensagens está vazia!</div>
                 </div>
             @endif

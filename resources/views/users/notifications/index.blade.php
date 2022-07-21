@@ -14,9 +14,9 @@
 
 <div class="col-md-9  left-col ">
 
-    <div class="panel panel-default padding-sm">
+    <div class="card card-default padding-sm">
 
-        <div class="panel-heading">
+        <div class="card-header">
           <h1>{{ lang('My Notifications') }}</h1>
         </div>
 
@@ -87,7 +87,7 @@
             </div>
 
         @else
-            <div class="panel-body">
+            <div class="box-body panel-body card-body">
                 <div class="empty-block">{{ lang('You dont have any notice yet!') }}</div>
             </div>
         @endif

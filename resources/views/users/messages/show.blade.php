@@ -14,9 +14,9 @@ Minhas Mensagens | @parent
 
     <div class="col-md-9  left-col ">
 
-        <div class="panel panel-default padding-sm">
+        <div class="card card-default padding-sm">
 
-            <div class="panel-body">
+            <div class="box-body panel-body card-body">
                 <div><a href="{{ route('profile.transmissor.messages.index') }}" class="normalize-link-color"><i class="fa fa-arrow-left" aria-hidden="true"></i> Retorno</a></div>
                 <br>
                 <div>
