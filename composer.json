@@ -35,7 +35,7 @@
         "sierratecnologia/population": "dev-master",
         "sierratecnologia/telefonica": "dev-master",
         "ramsey/uuid": ">=3.8",
-        "guzzlehttp/guzzle": "^6.0 || ^7.0 || ^8.0",
+        "guzzlehttp/guzzle": "^6.0|^7.0|^8.0",
         "cmgmyr/messenger": "dev-master"
     },
     "require-dev": {
