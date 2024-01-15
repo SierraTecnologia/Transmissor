@@ -20,15 +20,15 @@ if (! $recipient instanceof \Illuminate\Database\Eloquent\Model) {
 
     <div class="col-md-9  left-col ">
 
-        <div class="panel panel-default padding-sm">
+        <div class="card card-default padding-sm">
 
-            <div class="panel-heading ">
+            <div class="card-header ">
                 <h1>
                     Envie uma mensagem
                 </h1>
             </div>
 
-            <div class="panel-body">
+            <div class="box-body panel-body card-body">
                 @if ($recipient)
                     <div>
                         <a href="{{ route('components.actors.profile.show', [$recipient->id]) }}" title="{{ $recipient->name }}">
