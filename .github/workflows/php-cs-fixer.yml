@@ -1,23 +1,72 @@
-name: Check & fix styling
+name: PHP Code Style
 
-on: [push]
+on:
+  push:
+    branches: [ master, main, stable, develop ]
+    paths:
+      - '**.php'
+      - '.php-cs-fixer.php'
+      - '.php_cs'
+  pull_request:
+    branches: [ master, main, stable, develop ]
+    paths:
+      - '**.php'
 
 jobs:
   php-cs-fixer:
+    name: PHP CS Fixer
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           ref: ${{ github.head_ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mbstring
+          coverage: none
+          tools: php-cs-fixer, composer:v2
+
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.composer/cache
+            .php-cs-fixer.cache
+          key: php-cs-fixer-${{ runner.os }}-${{ hashFiles('.php-cs-fixer.php', '.php_cs') }}
+          restore-keys: |
+            php-cs-fixer-${{ runner.os }}-
 
       - name: Run PHP CS Fixer
-        uses: docker://oskarstark/php-cs-fixer-ga
-        with:
-          args: --config=.php_cs.dist --allow-risky=yes
+        run: |
+          composer global require friendsofphp/php-cs-fixer
+          if [ -f .php-cs-fixer.php ]; then
+            php-cs-fixer fix --config=.php-cs-fixer.php --allow-risky=yes --dry-run --diff --verbose
+          elif [ -f .php_cs ]; then
+            php-cs-fixer fix --config=.php_cs --allow-risky=yes --dry-run --diff --verbose
+          else
+            echo "No PHP CS Fixer configuration file found"
+            exit 1
+          fi
+
+      - name: Fix and commit changes (only on push to main branches)
+        if: github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/stable')
+        run: |
+          if [ -f .php-cs-fixer.php ]; then
+            php-cs-fixer fix --config=.php-cs-fixer.php --allow-risky=yes
+          elif [ -f .php_cs ]; then
+            php-cs-fixer fix --config=.php_cs --allow-risky=yes
+          fi
 
       - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v4
+        if: github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/stable')
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: Fix styling
+          commit_message: "style: fix code styling with PHP CS Fixer"
+          commit_user_name: github-actions[bot]
+          commit_user_email: github-actions[bot]@users.noreply.github.com

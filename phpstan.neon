@@ -1,0 +1,24 @@
+includes:
+    - ./vendor/nunomaduro/larastan/extension.neon
+
+parameters:
+    paths:
+        - src
+
+    # Level 0 is the loosest and level 9 is the strictest
+    level: 5
+
+    ignoreErrors:
+        # Add custom ignore rules here if needed
+        # Example:
+        # - '#Call to an undefined method [a-zA-Z0-9\\_]+::method\(\)#'
+
+    excludePaths:
+        - tests/tests/Stubs/*
+        - vendor
+
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false
+
+    # Laravel specific
+    reportUnmatchedIgnoredErrors: false

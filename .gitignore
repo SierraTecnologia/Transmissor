@@ -1,11 +1,48 @@
+# Dependencies
 /vendor
+/node_modules
+
+# Composer
 composer.phar
-.DS_Store
+composer.lock
+
+# Build & Coverage
 build
 build.json
-/node_modules
-.env
-*.sqlite
-.php_cs.cache
 .phpunit.result.cache
+.phpunit.cache
+
+# IDE & Editors
+.DS_Store
+.idea
+.vscode
+*.swp
+*.swo
+*~
+
+# Environment
+.env
+.env.backup
+.env.local
+.env.testing
+
+# Database
+*.sqlite
+*.sqlite-journal
+
+# Laravel
+storage/*.key
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+
+# Quality Tools Cache
+.php_cs.cache
+.php-cs-fixer.cache
+.phpstan.cache
+.psalm-cache
+
+# Files
 files
