@@ -47,10 +47,13 @@
         "barryvdh/laravel-debugbar": "*",
         "barryvdh/laravel-ide-helper": ">=2.7",
         "codedungeon/phpunit-result-printer": ">=0.27.0",
-        "friendsofphp/php-cs-fixer": "^2.18",
-        "orchestra/testbench": "^3.0|^4.0|^5.0|^6.0",
+        "friendsofphp/php-cs-fixer": "^3.0",
+        "nunomaduro/larastan": "^2.0",
+        "orchestra/testbench": "^3.0|^4.0|^5.0|^6.0|^7.0|^8.0",
+        "phpstan/phpstan": "^1.10",
         "phpunit/phpunit": "^8.0|^9.0|^10.0",
-        "psalm/plugin-laravel": "^1.5"
+        "psalm/plugin-laravel": "^1.5",
+        "vimeo/psalm": "^4.0|^5.0"
     },
     "suggest": {
         "illuminate/config": "^5.5|^6.0|^7.0|^8.0",
@@ -69,7 +72,19 @@
     "scripts": {
         "test": "vendor/bin/phpunit",
         "test-coverage": "vendor/bin/phpunit --coverage-html build/coverage",
-        "format": "vendor/bin/php-cs-fixer fix",
+        "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes",
+        "format-dry": "vendor/bin/php-cs-fixer fix --allow-risky=yes --dry-run --diff",
+        "analyse": [
+            "@phpstan",
+            "@psalm"
+        ],
+        "phpstan": "vendor/bin/phpstan analyse",
+        "psalm": "vendor/bin/psalm",
+        "check": [
+            "@format-dry",
+            "@analyse",
+            "@test"
+        ],
         "post-install-cmd": [],
         "post-update-cmd": [],
         "post-create-project-cmd": []

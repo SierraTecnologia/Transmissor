@@ -1,25 +1,26 @@
-name: Psalm Static Analysis
+name: PHPStan Static Analysis
 
 on:
   push:
     branches: [ master, main, stable, develop ]
     paths:
       - '**.php'
-      - 'psalm.xml'
-      - 'psalm.xml.dist'
+      - 'phpstan.neon'
+      - 'phpstan.neon.dist'
       - 'composer.json'
       - 'composer.lock'
   pull_request:
     branches: [ master, main, stable, develop ]
     paths:
       - '**.php'
-      - 'psalm.xml'
-      - 'psalm.xml.dist'
+      - 'phpstan.neon'
+      - 'phpstan.neon.dist'
 
 jobs:
-  psalm:
-    name: Psalm Analysis
+  phpstan:
+    name: PHPStan Analysis
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -35,13 +36,15 @@ jobs:
       - name: Cache composer dependencies
         uses: actions/cache@v4
         with:
-          path: vendor
-          key: composer-${{ hashFiles('composer.lock') }}
+          path: |
+            vendor
+            .phpstan.cache
+          key: phpstan-${{ runner.os }}-${{ hashFiles('composer.lock') }}
           restore-keys: |
-            composer-
+            phpstan-${{ runner.os }}-
 
       - name: Install dependencies
         run: composer install --prefer-dist --no-interaction --no-progress
 
-      - name: Run Psalm
-        run: ./vendor/bin/psalm --output-format=github --no-progress
+      - name: Run PHPStan
+        run: ./vendor/bin/phpstan analyse --error-format=github --no-progress
