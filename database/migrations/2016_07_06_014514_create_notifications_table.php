@@ -20,7 +20,7 @@ class CreateNotificationsTable extends Migration
             \Log::debug('Migration Ignorada por causa de Feature transmissor');
             return ;
         }
-        Schema::create('notifications', function (Blueprint $table) {
+        Schema::hasTable('notifications') || Schema::create('notifications', function (Blueprint $table) {
             $table->increments('id');
 
             $table->string('flag');
@@ -34,7 +34,7 @@ class CreateNotificationsTable extends Migration
             $table->softDeletes();
             $table->timestamps();
         });
-        // Schema::create('notifications', function (Blueprint $table) {
+        // Schema::hasTable('notifications') || Schema::create('notifications', function (Blueprint $table) {
         //     $table->increments('id');
         //     $table->integer('from_user_id')->index();
         //     $table->integer('user_id')->index();

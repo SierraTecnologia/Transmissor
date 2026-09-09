@@ -5,7 +5,10 @@
     "keywords": [
         "sierratecnologia",
         "transmissor",
-        "laravel", "messenger", "messaging", "user messaging"
+        "laravel",
+        "messenger",
+        "messaging",
+        "user messaging"
     ],
     "license": "MIT",
     "homepage": "https://sierratecnologia.com/packages/transmissor/",
@@ -27,33 +30,29 @@
         }
     ],
     "require": {
-        "php": "^7.2|^8.0",
-        "illuminate/config": "^5.5|^6.0|^7.0|^8.0",
-        "illuminate/support": "^5.5|^6.0|^7.0|^8.0",
-        "illuminate/database": "^5.5|^6.0|^7.0|^8.0",
-        "sierratecnologia/muleta": "^0.4.0",
-        "sierratecnologia/crypto": "^0.4.0",
-        "sierratecnologia/integrations": "^0.4.0",
-        "sierratecnologia/porteiro": "^0.4.0",
-        "sierratecnologia/population": "^0.4.0",
-        "sierratecnologia/locaravel": "^0.4.0",
-        "sierratecnologia/telefonica": "^0.4.0",
-        "ramsey/uuid": ">=3.8",
-        "guzzlehttp/guzzle": "^6.0|^7.0|^8.0",
-        "cmgmyr/messenger": "dev-master"
+        "php": "^8.3",
+        "illuminate/config": "^13.0",
+        "illuminate/support": "^13.0",
+        "illuminate/database": "^13.0",
+        "sierratecnologia/muleta": "^2.0",
+        "sierratecnologia/crypto": "^2.0",
+        "sierratecnologia/integrations": "^2.0",
+        "sierratecnologia/porteiro": "^2.0",
+        "sierratecnologia/population": "^2.0",
+        "sierratecnologia/locaravel": "^2.0",
+        "sierratecnologia/telefonica": "^2.0",
+        "ramsey/uuid": "^4.9",
+        "guzzlehttp/guzzle": "^7.10",
+        "cmgmyr/messenger": "^2.32"
     },
     "require-dev": {
-        "adamwathan/faktory": "0.3.*",
-        "barryvdh/laravel-debugbar": "*",
-        "barryvdh/laravel-ide-helper": ">=2.7",
-        "codedungeon/phpunit-result-printer": ">=0.27.0",
-        "friendsofphp/php-cs-fixer": "^3.0",
-        "nunomaduro/larastan": "^2.0",
-        "orchestra/testbench": "^3.0|^4.0|^5.0|^6.0|^7.0|^8.0",
-        "phpstan/phpstan": "^1.10",
-        "phpunit/phpunit": "^8.0|^9.0|^10.0",
-        "psalm/plugin-laravel": "^1.5",
-        "vimeo/psalm": "^4.0|^5.0"
+        "barryvdh/laravel-debugbar": "^4.4",
+        "barryvdh/laravel-ide-helper": "^3.7",
+        "friendsofphp/php-cs-fixer": "^3.68",
+        "nunomaduro/larastan": "^3.11",
+        "orchestra/testbench": "^11.0",
+        "phpstan/phpstan": "^2.2",
+        "phpunit/phpunit": "^12.0"
     },
     "suggest": {
         "illuminate/config": "^5.5|^6.0|^7.0|^8.0",
@@ -100,5 +99,6 @@
                 "Transmissor\\TransmissorProvider"
             ]
         }
-    }
+    },
+    "version": "2.0.0"
 }
