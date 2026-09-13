@@ -22,11 +22,14 @@ class AddSoftDeletesToParticipantsTable extends Migration
             \Log::debug('Migration Ignorada por causa de Feature transmissor');
             return ;
         }
-        Schema::table(
-            Models::table('participants'), function (Blueprint $table) {
-                $table->softDeletes();
-            }
-        );
+        $tableName = Models::table('participants');
+        if (Schema::hasTable($tableName) && ! Schema::hasColumn($tableName, 'deleted_at')) {
+            Schema::table(
+                $tableName, function (Blueprint $table) {
+                    $table->softDeletes();
+                }
+            );
+        }
     }
 
     /**
@@ -44,10 +47,13 @@ class AddSoftDeletesToParticipantsTable extends Migration
             \Log::debug('Migration Ignorada por causa de Feature transmissor');
             return ;
         }
-        Schema::table(
-            Models::table('participants'), function (Blueprint $table) {
-                $table->dropSoftDeletes();
-            }
-        );
+        $tableName = Models::table('participants');
+        if (Schema::hasTable($tableName) && Schema::hasColumn($tableName, 'deleted_at')) {
+            Schema::table(
+                $tableName, function (Blueprint $table) {
+                    $table->dropSoftDeletes();
+                }
+            );
+        }
     }
 }

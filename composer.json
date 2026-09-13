@@ -52,7 +52,7 @@
         "nunomaduro/larastan": "^3.11",
         "orchestra/testbench": "^11.0",
         "phpstan/phpstan": "^2.2",
-        "phpunit/phpunit": "^12.0"
+        "phpunit/phpunit": "^13.0"
     },
     "suggest": {
         "illuminate/config": "^5.5|^6.0|^7.0|^8.0",
@@ -88,6 +88,15 @@
         "post-update-cmd": [],
         "post-create-project-cmd": []
     },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../**",
+            "options": {
+                "symlink": true
+            }
+        }
+    ],
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
@@ -100,5 +109,5 @@
             ]
         }
     },
-    "version": "2.0.0"
+    "version": "2.1.0"
 }

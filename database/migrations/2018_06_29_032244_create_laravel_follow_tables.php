@@ -27,8 +27,10 @@ class CreateLaravelFollowTables extends Migration
             \Log::debug('Migration Ignorada por causa de Feature transmissor');
             return ;
         }
-        Schema::create(
-            \Illuminate\Support\Facades\Config::get('follow.followable_table', 'followables'), function (Blueprint $table) {
+        $tableName = \Illuminate\Support\Facades\Config::get('follow.followable_table', 'followables');
+        if (! \Illuminate\Support\Facades\Schema::hasTable($tableName)) {
+            Schema::create(
+                $tableName, function (Blueprint $table) {
                 $userForeignKey = \Illuminate\Support\Facades\Config::get('follow.users_table_foreign_key', 'person_code');
 
                 // // Laravel 5.8 session user is unsignedBigInteger
@@ -51,8 +53,9 @@ class CreateLaravelFollowTables extends Migration
                 //     ->on(\Illuminate\Support\Facades\Config::get('follow.users_table_name', 'users'))
                 //     ->onUpdate('cascade')
                 //     ->onDelete('cascade');
-            }
-        );
+                }
+            );
+        }
     }
 
     /**
@@ -68,12 +71,15 @@ class CreateLaravelFollowTables extends Migration
             \Log::debug('Migration Ignorada por causa de Feature transmissor');
             return ;
         }
-        Schema::table(
-            \Illuminate\Support\Facades\Config::get('follow.followable_table', 'followables'), function ($table) {
-                $table->dropForeign(\Illuminate\Support\Facades\Config::get('follow.followable_table', 'followables').'_user_id_foreign');
-            }
-        );
+        $tableName = \Illuminate\Support\Facades\Config::get('follow.followable_table', 'followables');
+        if (Schema::hasTable($tableName)) {
+            Schema::table(
+                $tableName, function ($table) use ($tableName) {
+                    $table->dropForeign($tableName.'_user_id_foreign');
+                }
+            );
 
-        Schema::drop(\Illuminate\Support\Facades\Config::get('follow.followable_table', 'followables'));
+            Schema::dropIfExists($tableName);
+        }
     }
 }

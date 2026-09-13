@@ -2,7 +2,7 @@
 
 use Transmissor\Models\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Tests\TestCase;
+use Transmissor\Test\TestCase;
 use Transmissor\Services\RoleService;
 
 class ActivityServiceTest extends TestCase

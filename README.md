@@ -52,16 +52,16 @@
 
 ## Requirements
 
-- PHP 7.2 or higher (PHP 8.0+ supported)
-- Laravel 5.5 or higher (Laravel 8.x supported)
+- PHP 8.3 or higher
+- Laravel 13.x
 - Dependencies:
-  - `sierratecnologia/muleta` ^0.4.0
-  - `sierratecnologia/crypto` ^0.4.0
-  - `sierratecnologia/integrations` ^0.4.0
-  - `sierratecnologia/porteiro` ^0.4.0
-  - `sierratecnologia/population` ^0.4.0
-  - `sierratecnologia/locaravel` ^0.4.0
-  - `sierratecnologia/telefonica` ^0.4.0
+  - `sierratecnologia/muleta` ^2.1
+  - `sierratecnologia/crypto` ^2.1
+  - `sierratecnologia/integrations` ^2.1
+  - `sierratecnologia/porteiro` ^2.1
+  - `sierratecnologia/population` ^2.1
+  - `sierratecnologia/locaravel` ^2.1
+  - `sierratecnologia/telefonica` ^2.1
 
 
 ## Installation

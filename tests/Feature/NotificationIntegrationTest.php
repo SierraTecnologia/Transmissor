@@ -1,6 +1,6 @@
 <?php
 
-use Tests\TestCase;
+use Transmissor\Test\TestCase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 

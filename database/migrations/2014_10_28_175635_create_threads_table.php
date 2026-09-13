@@ -22,11 +22,14 @@ class CreateThreadsTable extends Migration
             \Log::debug('Migration Ignorada por causa de Feature transmissor');
             return ;
         }
-        Schema::create(Models::table('threads'), function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('subject');
-            $table->timestamps();
-        });
+        $tableName = Models::table('threads');
+        if (! Schema::hasTable($tableName)) {
+            Schema::create($tableName, function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('subject');
+                $table->timestamps();
+            });
+        }
     }
 
     /**

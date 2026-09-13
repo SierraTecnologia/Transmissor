@@ -22,8 +22,10 @@ class CreateMessagesTable extends Migration
             \Log::debug('Migration Ignorada por causa de Feature transmissor');
             return ;
         }
-        Schema::create(Models::table('messages'), function (Blueprint $table) {
-            $table->increments('id');
+        $tableName = Models::table('messages');
+        if (! Schema::hasTable($tableName)) {
+            Schema::create($tableName, function (Blueprint $table) {
+                $table->increments('id');
 
             // threads
             $table->string('messageable_id');
@@ -33,8 +35,9 @@ class CreateMessagesTable extends Migration
             $table->string('actorable_id');
             $table->string('actorable_type');
             $table->text('body');
-            $table->timestamps();
-        });
+                $table->timestamps();
+            });
+        }
     }
 
     /**

@@ -22,20 +22,23 @@ class CreateParticipantsTable extends Migration
             \Log::debug('Migration Ignorada por causa de Feature transmissor');
             return ;
         }
-        Schema::create(
-            Models::table('participants'), function (Blueprint $table) {
-                $table->increments('id');
-                // threads
-                $table->string('messageable_id');
-                $table->string('messageable_type');
-    
-                // actor
-                $table->string('actorable_id');
-                $table->string('actorable_type');
-                $table->timestamp('last_read')->nullable();
-                $table->timestamps();
-            }
-        );
+        $tableName = Models::table('participants');
+        if (! Schema::hasTable($tableName)) {
+            Schema::create(
+                $tableName, function (Blueprint $table) {
+                    $table->increments('id');
+                    // threads
+                    $table->string('messageable_id');
+                    $table->string('messageable_type');
+
+                    // actor
+                    $table->string('actorable_id');
+                    $table->string('actorable_type');
+                    $table->timestamp('last_read')->nullable();
+                    $table->timestamps();
+                }
+            );
+        }
     }
 
     /**
