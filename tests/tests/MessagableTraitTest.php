@@ -15,8 +15,7 @@ class MessagableTraitTest extends TestCase
         Eloquent::unguard();
     }
 
-    /** @test */
-    public function it_should_get_all_threads_with_new_messages()
+    public function test_it_should_get_all_threads_with_new_messages()
     {
         $user = User::create(
             [
@@ -48,8 +47,7 @@ class MessagableTraitTest extends TestCase
         $this->assertEquals(1, $user->newThreadsCount());
     }
 
-    /** @test */
-    public function it_get_all_incoming_messages_count_for_user()
+    public function test_it_get_all_incoming_messages_count_for_user()
     {
         $user = User::create(
             [
@@ -82,8 +80,7 @@ class MessagableTraitTest extends TestCase
         $this->assertEquals(10, $user->unreadMessagesCount());
     }
 
-    /** @test */
-    public function it_should_get_participant_threads()
+    public function test_it_should_get_participant_threads()
     {
         $user = User::create(
             [
@@ -101,11 +98,13 @@ class MessagableTraitTest extends TestCase
     }
 }
 
-class User extends Eloquent
-{
-    use Messagable;
+if (!class_exists('Transmissor\Test\User')) {
+    class User extends Eloquent
+    {
+        use Messagable;
 
-    protected $table = 'users';
+        protected $table = 'users';
 
-    protected $fillable = ['name', 'email', 'notify'];
+        protected $fillable = ['name', 'email', 'notify'];
+    }
 }

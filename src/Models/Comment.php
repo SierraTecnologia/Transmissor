@@ -2,14 +2,12 @@
 
 namespace Transmissor\Models;
 
-use App\Contants\Tables;
 use Carbon\Carbon;
 use Finder\Models\Reference;
 use Illuminate\Database\Eloquent\Collection;
 use Population\Manipule\Builders\CommentBuilder;
 use Population\Manipule\Entities\CommentEntity;
 use Pedreiro\Models\Base;
-use Transmissor\Models\Post;
 
 /**
  * Class Comment.
@@ -66,7 +64,9 @@ class Comment extends Base
 
         static::deleting(
             function (self $comment) {
-                $comment->posts()->detach();
+                if (method_exists($comment, 'posts')) {
+                    $comment->posts()->detach();
+                }
             }
         );
     }
@@ -116,7 +116,8 @@ class Comment extends Base
     {
         return new CommentEntity(
             [
-            'id' => $this->id,
+            'id' => $this->id ?? 0,
+            'value' => $this->content,
             'content' => $this->content,
             ]
         );

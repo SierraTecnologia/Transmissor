@@ -12,8 +12,7 @@ class EloquentMessageTest extends TestCase
         Eloquent::unguard();
     }
 
-    /** @test */
-    public function it_should_get_the_recipients_of_a_message()
+    public function test_it_should_get_the_recipients_of_a_message()
     {
         $message = $this->faktory->build('message');
         $thread = $this->faktory->create('thread');

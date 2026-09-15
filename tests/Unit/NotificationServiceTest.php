@@ -1,21 +1,34 @@
 <?php
 
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Transmissor\Test\TestCase;
-use TransmissorServices\NotificationService;
+use Transmissor\Services\NotificationService;
+use Transmissor\Services\UserService;
+use Transmissor\Models\Notification;
 
 class NotificationServiceTest extends TestCase
 {
-    use DatabaseMigrations;
+    protected $service;
+    protected $originalArray;
+    protected $editedArray;
+    protected $searchTerm;
 
     protected function setUp(): void
     {
         parent::setUp();
-        $role = factory(Transmissor\Models\Role::class)->create();
-        $user = factory(Transmissor\Models\User::class)->create();
-        $this->app->make(TransmissorServices\UserService::class)->create($user, 'password');
 
-        $this->service = $this->app->make(NotificationService::class);
+        $user = new class {
+            public $id = 1;
+            public $name = 'Test User';
+            public function notify($notification) {}
+        };
+
+        $userServiceMock = Mockery::mock(UserService::class);
+        $userServiceMock->shouldReceive('find')->andReturn($user);
+        $userServiceMock->shouldReceive('all')->andReturn(collect([$user]));
+        $this->app->instance(UserService::class, $userServiceMock);
+
+        $this->service = new NotificationService(new Notification(), $userServiceMock);
+
         $this->originalArray = [
             'user_id' => 1,
             'flag' => 'info',

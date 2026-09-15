@@ -68,6 +68,12 @@
             "helpers/activity_helper.php"
         ]
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Transmissor\\Test\\": "tests/tests/",
+            "Transmissor\\Tests\\": "tests/tests/"
+        }
+    },
     "scripts": {
         "test": "vendor/bin/phpunit",
         "test-coverage": "vendor/bin/phpunit --coverage-html build/coverage",
@@ -109,5 +115,5 @@
             ]
         }
     },
-    "version": "2.1.1"
+    "version": "2.2.0"
 }

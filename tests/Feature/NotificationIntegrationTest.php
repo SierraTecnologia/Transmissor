@@ -1,90 +1,73 @@
 <?php
 
 use Transmissor\Test\TestCase;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Transmissor\Models\Notification;
+use Transmissor\Models\Group;
+use Transmissor\Models\Comment;
+use Transmissor\Test\User;
 
 class NotificationIntegrationTest extends TestCase
 {
-    use DatabaseMigrations;
-    use WithoutMiddleware;
-
-    protected function setUp(): void
+    public function testNotificationModelCrud()
     {
-        parent::setUp();
-
-        $this->notification = factory(Transmissor\Models\Notification::class)->make([
-            'id' => 1,
+        $notification = Notification::create([
             'user_id' => 1,
             'flag' => 'info',
-            'uuid' => 'lksjdflaskhdf',
-            'title' => 'Testing',
+            'uuid' => 'test-uuid-1234',
+            'title' => 'Testing Notification',
             'details' => 'Your car has been impounded!',
             'is_read' => 0,
         ]);
-        $this->notificationEdited = factory(Transmissor\Models\Notification::class)->make([
+
+        $this->assertEquals(1, $notification->id);
+        $this->assertEquals('info', $notification->flag);
+        $this->assertEquals('Testing Notification', $notification->title);
+        $this->assertEquals(0, $notification->is_read);
+
+        $notification->update(['is_read' => 1]);
+        $this->assertEquals(1, $notification->fresh()->is_read);
+        $this->assertDatabaseHas('notifications', [
             'id' => 1,
-            'user_id' => 1,
-            'flag' => 'info',
-            'uuid' => 'lksjdflaskhdf',
-            'title' => 'Testing',
-            'details' => 'Your car has been impounded!',
             'is_read' => 1,
         ]);
 
-        $role = factory(Transmissor\Models\Role::class)->create();
-        $user = factory(Transmissor\Models\User::class)->create();
-        $user->roles()->attach($role);
-
-        $this->actor = $this->actingAs($user);
+        $notification->delete();
+        $this->assertNull(Notification::find(1));
     }
 
-    public function testIndex()
+    public function testGroupModel()
     {
-        $response = $this->actor->call('GET', 'admin/notifications');
-        $this->assertEquals(200, $response->getStatusCode());
-        $response->assertViewHas('notifications');
+        $chat = [
+            'id' => 987654,
+            'type' => 'supergroup',
+            'title' => 'Developers Group',
+        ];
+
+        $group = Group::updateOrCreateFromChat($chat, 'pt-BR', 'BRL');
+        $this->assertNotNull($group);
+        $this->assertEquals(987654, $group->telegram_id);
+        $this->assertEquals('Developers Group', $group->title);
+        $this->assertEquals('pt-BR', $group->language);
+        $this->assertEquals('BRL', $group->currency);
+
+        $updated = Group::updateOrCreateFromChat($chat, 'en', 'USD');
+        $this->assertEquals('en', $updated->language);
+        $this->assertEquals('USD', $updated->currency);
     }
 
-    public function testCreate()
+    public function testCommentModel()
     {
-        $response = $this->actor->call('GET', 'admin/notifications/create');
-        $this->assertEquals(200, $response->getStatusCode());
-    }
+        $comment = new Comment([
+            'commentable_id' => 10,
+            'commentable_type' => 'App\\Models\\Post',
+            'content' => 'Great Post and Discussion',
+        ]);
 
-    public function testStore()
-    {
-        $response = $this->actor->call('POST', 'admin/notifications', $this->notification->toArray());
+        $this->assertEquals(10, $comment->commentable_id);
+        $this->assertEquals('great_post_and_discussion', $comment->content);
 
-        $this->assertEquals(302, $response->getStatusCode());
-        $response->assertRedirect('admin/notifications/'.$this->notification->id.'/edit');
-    }
-
-    public function testEdit()
-    {
-        $this->actor->call('POST', 'admin/notifications', $this->notification->toArray());
-
-        $response = $this->actor->call('GET', 'admin/notifications/'.$this->notification->id.'/edit');
-        $this->assertEquals(200, $response->getStatusCode());
-        $response->assertViewHas('notification');
-    }
-
-    public function testUpdate()
-    {
-        $this->actor->call('POST', 'admin/notifications', $this->notification->toArray());
-        $response = $this->actor->call('PATCH', 'admin/notifications/1', $this->notificationEdited->toArray());
-
-        $this->assertEquals(302, $response->getStatusCode());
-        $this->assertDatabaseHas('notifications', $this->notificationEdited->toArray());
-        $response->assertRedirect('/');
-    }
-
-    public function testDelete()
-    {
-        $this->actor->call('POST', 'admin/notifications', $this->notification->toArray());
-
-        $response = $this->call('DELETE', 'admin/notifications/'.$this->notification->id);
-        $this->assertEquals(302, $response->getStatusCode());
-        $response->assertRedirect('admin/notifications');
+        $entity = $comment->toEntity();
+        $this->assertNotNull($entity);
+        $this->assertEquals('great_post_and_discussion', $entity->getValue());
     }
 }

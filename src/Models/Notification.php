@@ -4,9 +4,8 @@
 
 namespace Transmissor\Models;
 
-use App\Contants\Tables;
 use Illuminate\Database\Eloquent\Collection;
-use App\Models\Model;
+use Illuminate\Database\Eloquent\Model;
 
 use Population\Manipule\Entities\NotificationEntity;
 use Population\Manipule\Builders\NotificationBuilder;

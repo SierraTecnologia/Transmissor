@@ -21,14 +21,19 @@ class Participant extends MessengerParticipant
         return $query->where('actorable_type', '=', User::class)->where('actorable_id', '=', $user_id);
     }
 
-    // public static function boot()
-    // {
-    //     static::updating(function ($model) {
-    //         // do some logging
-    //         // override some property like $model->something = transform($something);
-    //     });
-    //     parent::boot();
-    // }
+    public static function boot()
+    {
+        parent::boot();
+
+        static::saving(function ($model) {
+            if ($model->messageable_id && ($model->messageable_type === Models::classname(Thread::class) || !$model->messageable_type)) {
+                $model->thread_id = $model->messageable_id;
+            } elseif ($model->thread_id && !$model->messageable_id) {
+                $model->messageable_id = $model->thread_id;
+                $model->messageable_type = Models::classname(Thread::class);
+            }
+        });
+    }
 
     
     /**

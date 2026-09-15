@@ -44,16 +44,32 @@ class Message extends BaseMessage
      *
      * @var array
      */
-    protected $dates = ['deleted_at'];
+    protected $casts = [
+        'deleted_at' => 'datetime',
+    ];
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::saving(function ($model) {
+            if ($model->messageable_id && ($model->messageable_type === Models::classname(Thread::class) || !$model->messageable_type)) {
+                $model->thread_id = $model->messageable_id;
+            } elseif ($model->thread_id && !$model->messageable_id) {
+                $model->messageable_id = $model->thread_id;
+                $model->messageable_type = Models::classname(Thread::class);
+            }
+        });
+    }
 
     /**
      * {@inheritDoc}
      */
     public function __construct(array $attributes = [])
     {
-        $this->table = Models::table('messages');
-
         parent::__construct($attributes);
+
+        $this->table = Models::table('messages');
     }
     
     /**

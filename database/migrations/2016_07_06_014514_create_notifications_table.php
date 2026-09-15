@@ -23,14 +23,15 @@ class CreateNotificationsTable extends Migration
         Schema::hasTable('notifications') || Schema::create('notifications', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->string('flag');
-            $table->string('uuid');
-            $table->string('title');
+            $table->integer('user_id')->nullable()->index();
+            $table->string('flag')->nullable();
+            $table->string('uuid')->nullable();
+            $table->string('title')->nullable();
             $table->text('details')->nullable();
             $table->boolean('is_read')->default(false);
 
-            $table->string('notificable_id');
-            $table->string('notificable_type');
+            $table->string('notificable_id')->nullable();
+            $table->string('notificable_type')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

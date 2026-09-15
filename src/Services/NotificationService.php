@@ -2,7 +2,9 @@
 
 namespace Transmissor\Services;
 
-use Crypto;
+use Exception;
+use Illuminate\Support\Str;
+use SierraTecnologia\Crypto\Services\Crypto;
 use Illuminate\Support\Facades\Schema;
 use Transmissor\Models\Notification;
 use Transmissor\Notifications\GeneralNotification;
@@ -120,7 +122,7 @@ class NotificationService
                 $users = $this->userService->all();
 
                 foreach ($users as $user) {
-                    $input['uuid'] = Crypto::uuid();
+                    $input['uuid'] = class_exists(Crypto::class) ? Crypto::uuid() : Str::uuid()->toString();
                     $input['user_id'] = $user->id;
                     $this->model->create($input);
                 }
@@ -137,7 +139,7 @@ class NotificationService
                 return true;
             }
 
-            $input['uuid'] = Crypto::uuid();
+            $input['uuid'] = $input['uuid'] ?? (class_exists(Crypto::class) ? Crypto::uuid() : Str::uuid()->toString());
 
             $user = $this->userService->find($input['user_id']);
             $user->notify(
