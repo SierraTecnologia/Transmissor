@@ -7,9 +7,6 @@ namespace Transmissor\Models;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
-use Population\Manipule\Entities\NotificationEntity;
-use Population\Manipule\Builders\NotificationBuilder;
-
 /**
  * Class Notification.
  *

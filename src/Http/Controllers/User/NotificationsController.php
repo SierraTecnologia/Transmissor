@@ -2,6 +2,8 @@
 
 namespace Transmissor\Http\Controllers\User;
 
+use Illuminate\Http\Request;
+
 use Transmissor\Http\Controllers\User\Controller;
 use Auth;
 

@@ -35,12 +35,6 @@
         "illuminate/support": "^13.0",
         "illuminate/database": "^13.0",
         "sierratecnologia/muleta": "^2.0",
-        "sierratecnologia/crypto": "^2.0",
-        "sierratecnologia/integrations": "^2.0",
-        "sierratecnologia/porteiro": "^2.0",
-        "sierratecnologia/population": "^2.0",
-        "sierratecnologia/locaravel": "^2.0",
-        "sierratecnologia/telefonica": "^2.0",
         "ramsey/uuid": "^4.9",
         "guzzlehttp/guzzle": "^7.10|^8.0",
         "cmgmyr/messenger": "^2.32"
@@ -52,9 +46,18 @@
         "nunomaduro/larastan": "^3.11",
         "orchestra/testbench": "^11.0",
         "phpstan/phpstan": "^2.2",
-        "phpunit/phpunit": "^13.0"
+        "phpunit/phpunit": "^13.0",
+        "sierratecnologia/crypto": "^2.0",
+        "sierratecnologia/porteiro": "^2.0",
+        "sierratecnologia/telefonica": "^2.0"
     },
     "suggest": {
+        "sierratecnologia/crypto": "^2.0 - Optional encryption utilities",
+        "sierratecnologia/integrations": "^2.0 - Third-party connectors",
+        "sierratecnologia/porteiro": "^2.0 - User auth activity tracking",
+        "sierratecnologia/population": "^2.0 - Entity population models",
+        "sierratecnologia/locaravel": "^2.0 - Brazilian location models",
+        "sierratecnologia/telefonica": "^2.0 - WhatsApp messaging provider",
         "illuminate/config": "^5.5|^6.0|^7.0|^8.0",
         "illuminate/support": "^5.5|^6.0|^7.0|^8.0",
         "illuminate/database": "^5.5|^6.0|^7.0|^8.0",
