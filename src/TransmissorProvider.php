@@ -48,26 +48,13 @@ class TransmissorProvider extends ServiceProvider
      */
     public static $menuItens = [
         [
-            'text'        => 'Logs',
-            'route'       => 'rica.tracking.larametrics::metrics.index',
-            'icon'        => 'dashboard',
-            'icon_color'  => 'blue',
-            'label_color' => 'success',
+            'text'        => 'Notifications',
+            'route'       => 'admin.transmissor.notifications.index',
+            'icon'        => 'fas fa-fw fa-envelope',
+            'section'     => 'admin',
+            'order'       => 2101,
             'level'       => 2,
-            'order' => 550,
-            'section' => "painel",
-            // 'access' => \Porteiro\Models\Role::$ADMIN
         ],
-        // 'Admin' => [
-            [
-                'text'        => 'Notifications',
-                'route'       => 'admin.transmissor.notifications.index',
-                'icon'        => 'fas fa-fw fa-envelope',
-                'section'     => 'admin',
-                'order' => 2101,
-                'level'       => 2,
-            ],
-        // ],
     ];
 
     /**
@@ -149,6 +136,12 @@ class TransmissorProvider extends ServiceProvider
         );
 
         // Register commands
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                \Transmissor\Console\Commands\TestAlertCommand::class,
+                \Transmissor\Console\Commands\SendRemindersCommand::class,
+            ]);
+        }
         $this->registerCommandFolders(
             [
             base_path('vendor/sierratecnologia/transmissor/src/Console/Commands') => '\Transmissor\Console\Commands',
