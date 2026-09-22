@@ -42,7 +42,7 @@
         "sierratecnologia/locaravel": "^2.0",
         "sierratecnologia/telefonica": "^2.0",
         "ramsey/uuid": "^4.9",
-        "guzzlehttp/guzzle": "^7.10",
+        "guzzlehttp/guzzle": "^7.10|^8.0",
         "cmgmyr/messenger": "^2.32"
     },
     "require-dev": {
