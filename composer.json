@@ -58,6 +58,7 @@
         "sierratecnologia/population": "^2.0 - Entity population models",
         "sierratecnologia/locaravel": "^2.0 - Brazilian location models",
         "sierratecnologia/telefonica": "^2.0 - WhatsApp messaging provider",
+        "resend/resend-php": "^1.15 - Required by Laravel's resend mailer (MAIL_MAILER=resend) for email alerts",
         "illuminate/config": "^5.5|^6.0|^7.0|^8.0",
         "illuminate/support": "^5.5|^6.0|^7.0|^8.0",
         "illuminate/database": "^5.5|^6.0|^7.0|^8.0",

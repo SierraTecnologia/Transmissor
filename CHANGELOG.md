@@ -2,6 +2,10 @@
 
 ## [Unreleased](https://github.com/sierratecnologia/transmissor/compare/0.0.1...master)
 
+### 🔧 Técnico
+
+- [x] **E-mail via Resend** — `resend/resend-php` em `suggest` e seção "Email Delivery" no README
+
 ### Added
 
 [ ] Activities

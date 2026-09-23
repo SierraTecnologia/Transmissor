@@ -115,6 +115,29 @@ return [
 ];
 ```
 
+### Email Delivery
+
+Transmissor sends email alerts through Laravel's `Mail` facade, so it uses
+whatever mailer the host application configures. The lib does not pick a
+provider.
+
+The recommended provider for the group's apps is [Resend](https://resend.com).
+Laravel ships the `resend` mailer; it only needs the SDK:
+
+```bash
+composer require resend/resend-php
+```
+
+```dotenv
+MAIL_MAILER=resend
+RESEND_API_KEY=re_...
+MAIL_FROM_ADDRESS="alerts@your-domain.com"
+```
+
+The sending domain must be verified in Resend. Run `php artisan config:cache`
+after changing `.env`. Alert recipients come from `sitec.transmissor.email.to`,
+`transmissor.alerts_email` or `central.alerts_email`, in that order.
+
 
 ## Usage
 
