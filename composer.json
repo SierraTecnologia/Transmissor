@@ -43,7 +43,7 @@
         "barryvdh/laravel-debugbar": "^4.4",
         "barryvdh/laravel-ide-helper": "^3.7",
         "friendsofphp/php-cs-fixer": "^3.68",
-        "nunomaduro/larastan": "^3.11",
+        "larastan/larastan": "^3.12",
         "orchestra/testbench": "^11.0",
         "phpstan/phpstan": "^2.2",
         "phpunit/phpunit": "^13.0",
@@ -119,5 +119,5 @@
             ]
         }
     },
-    "version": "2.2.0"
+    "version": "2.3.0"
 }
